@@ -163,6 +163,7 @@ export const projectDetails = [
     description: `Project for Meta Capstone where Developed an intuitive Frontend website for seamless online meal selection and food delivery.`,
     techstack: "React.js",
     githubLink: "https://github.com/Shinkhal/shinkhal.github.io/tree/main",
+    previewLink: "", // Provide a placeholder if there's no preview link
   },
   {
     title: "UMS Website",
@@ -170,6 +171,7 @@ export const projectDetails = [
     description: `Crafted a user-friendly University Management System website. A comprehensive university student portal to view teacher messages, academic updates, timetable, fees, assignments, attendance, and more.`,
     techstack: "HTML/CSS, JavaScript",
     githubLink: "https://github.com/Shinkhal/UMS",
+    previewLink: "", // Provide a placeholder if there's no preview link
   },
   {
     title: "Logos And Posters",
@@ -177,6 +179,7 @@ export const projectDetails = [
     description: `Designed logos and posters using Adobe Photoshop, Canva, Illustrator, InDesign, and Lightroom.`,
     techstack: "Adobe Photoshop, Canva, Illustrator, InDesign, Lightroom",
     previewLink: "https://drive.google.com/drive/folders/1jdHNNNcYe-zQWCYMmqPooEKV4GwiPJ3f?usp=sharing",
+    githubLink: "", // Provide a placeholder if there's no GitHub link
   },
   {
     title: "MCU Illustrations",
@@ -184,8 +187,8 @@ export const projectDetails = [
     description: `Created some illustration designs based on the characters of the Marvel Cinematic Universe (MCU).`,
     techstack: "Adobe Photoshop, Illustrator",
     previewLink: "https://drive.google.com/drive/folders/1jdHNNNcYe-zQWCYMmqPooEKV4GwiPJ3f?usp=sharing",
+    githubLink: "", // Provide a placeholder if there's no GitHub link
   },
-
 ];
 
 export const profileLinks = [

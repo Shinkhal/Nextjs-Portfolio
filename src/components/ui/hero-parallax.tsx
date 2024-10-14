@@ -9,17 +9,19 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 
+interface Project {
+  title: string;
+  image: string;
+  description: string;
+  techstack: string;
+  previewLink?: string; // Optional
+  githubLink: string; // Required
+}
+
 export const HeroParallax = ({
   projects,
 }: {
-  projects: {
-    title: string;
-    description: string;
-    image: string;
-    previewLink: string;
-    githubLink: string;
-    techstack: string;
-  }[];
+  projects: Project[]; 
 }) => {
   const firstRow = projects.slice(0, 5);
   const secondRow = projects.slice(5, 10);
@@ -55,6 +57,7 @@ export const HeroParallax = ({
     useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
     springConfig
   );
+
   return (
     <div
       ref={ref}
@@ -68,7 +71,6 @@ export const HeroParallax = ({
           translateY,
           opacity,
         }}
-        className=""
       >
         <motion.div className="flex flex-row-reverse space-x-reverse space-x-10 mb-20">
           {firstRow.map((project) => (
@@ -88,6 +90,7 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
+        {/* Uncomment if you want to use a third row */}
         {/* <motion.div className="flex flex-row-reverse space-x-reverse space-x-10">
           {thirdRow.map((project) => (
             <ProjectCard
@@ -109,9 +112,7 @@ export const Header = () => {
         The <br /> Project Corner
       </h1>
       <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
-      This collection highlights some of his most exciting and innovative work, spanning web development and full-stack applications.
-       Each project reflects his passion for creating impactful solutions using the latest technologies.
-        Explore live demos, browse through the code, and discover how I bring ideas to life with thoughtful design and development.
+        This collection highlights some of his most exciting and innovative work, spanning web development and full-stack applications. Each project reflects his passion for creating impactful solutions using the latest technologies. Explore live demos, browse through the code, and discover how I bring ideas to life with thoughtful design and development.
       </p>
     </div>
   );
@@ -121,14 +122,7 @@ export const ProjectCard = ({
   project,
   translate,
 }: {
-  project: {
-    title: string;
-    description: string;
-    image: string;
-    previewLink: string;
-    githubLink: string;
-    techstack: string;
-  };
+  project: Project; // Use the Project interface
   translate: MotionValue<number>;
 }) => {
   return (
