@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import BlurFade from "@/components/magicui/blur-fade";
 import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground } from "@/components/ui/stars-background";
@@ -13,7 +12,7 @@ export default function Contact() {
     email: "",
     message: "",
   });
-
+  const [result,setResult] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [redirecting, setRedirecting] = useState(false);
 
@@ -24,17 +23,42 @@ export default function Contact() {
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      await axios.post("https://portfoliobackend-production-0c9f.up.railway.app/api/send-email", formData);
+  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   try {
+  //     await axios.post("https://portfoliobackend-production-0c9f.up.railway.app/api/send-email", formData);
+  //     setSubmitted(true);
+  //     setRedirecting(true);
+  //   } catch (error) {
+  //     console.error("There was an error sending the email!", error);
+  //   }
+  // };
+
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "9c9ac32f-60e8-4ac1-9412-35b77ebff40d");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Form Submitted Successfully");
       setSubmitted(true);
       setRedirecting(true);
-    } catch (error) {
-      console.error("There was an error sending the email!", error);
+      event.target.reset();
+    } else {
+      console.log("Error", data);
+      setResult(data.message);
     }
   };
-
   useEffect(() => {
     if (redirecting) {
       const timer = setTimeout(() => {
