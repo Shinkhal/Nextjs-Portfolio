@@ -21,31 +21,36 @@ export const socialMediaUrl = {
 // Enter your Work Experience here
 export const workDetails = [
   {
+    Position: "Gen AI Coder",
+    Company: "Outlier",
+    Location: "Work from home",
+    Type: "Internship",
+    Duration: "October 2024 - Present"
+  },
+  {
     Position: "Web Developer Intern",
     Company: "Beasova (AICTE)",
     Location: "Work from home",
     Type: "Internship",
     Duration: "August 2024 - September 2024"
-
-
   },
   {
-    Position:"Web Developer Intern",
+    Position: "Web Developer Intern",
     Company: "CognoRise Infotech",
     Location: "Work from home",
     Type: "Internship",
     Duration: "August 2024 - September 2024"
-
   },
   {
     Position: "Graphic Designer",
-    Company: `Labdox`,
+    Company: "Labdox",
     Location: "Work from home",
     Type: "Internship",
-    Duration: "MAY 2024 - JUNE 2024",
-  },
+    Duration: "May 2024 - June 2024"
+  }
   
 ];
+
 
 // Enter your Education Details here
 export const eduDetails = [
@@ -142,7 +147,23 @@ export const projectDetails = [
     githubLink: "https://github.com/Shinkhal/gfg_api",
   },
   {
-    title: "Resturant Table Booking",
+    title: "Cakes N Shapes (Bakery Website)",
+    image: '/assets/projects/project11.png',  
+    description: `Developed a bakery website that allows users to log in, book a table to dine-in, browse the menu, check prices, and view bakery details.`,
+    techstack: "Vite+React, Node.js, MongoDB, JWT",
+    previewLink: "", // Provide the preview link
+    githubLink: "https://github.com/Shinkhal/Cakes-N-Shape",
+  },
+  {
+    title: "KeyDrive (Car Rental Website)",
+    image: '/assets/projects/project12.png',  // Replace with actual image path
+    description: `A car rental website built with PHP, allowing users to browse available cars, make reservations, and manage bookings.`,
+    techstack: "PHP, MySQL, HTML, CSS",
+    previewLink: "https://keydrive.com", // Provide the preview link
+    githubLink: "https://github.com/Shinkhal/KeyDrive",
+  },
+  {
+    title: "Restaurant Table Booking",
     image: '/assets/projects/project2.png',
     description: `Created a streamlined Restaurant Table Booking Website for convenient reservation management and other services of the restaurant with proper validation and authentication.`,
     techstack: "MERN Stack",
@@ -150,15 +171,16 @@ export const projectDetails = [
     githubLink: "https://github.com/Shinkhal/Feista-Flavours",
   },
   {
-    title: "Protfolio",
+    title: "Portfolio",
     image: '/assets/projects/project1.png',
     description: `Discover my portfolio—an interactive showcase of projects, skills, and contact information. Explore live project previews and GitHub repositories to see my work in action.`,
     techstack: "React.js, Node.js, Tailwind css",
     previewLink: "https://shinkhal-sinha.online",
     githubLink: "https://github.com/Web-Dev-Protfolio",
   },
+  
   {
-    title: "Resturant Frontend",
+    title: "Restaurant Frontend",
     image: '/assets/projects/project3.png',
     description: `Project for Meta Capstone where Developed an intuitive Frontend website for seamless online meal selection and food delivery.`,
     techstack: "React.js",
@@ -188,8 +210,9 @@ export const projectDetails = [
     techstack: "Adobe Photoshop, Illustrator",
     previewLink: "https://drive.google.com/drive/folders/1jdHNNNcYe-zQWCYMmqPooEKV4GwiPJ3f?usp=sharing",
     githubLink: "", // Provide a placeholder if there's no GitHub link
-  },
+  }
 ];
+
 
 export const profileLinks = [
   {
