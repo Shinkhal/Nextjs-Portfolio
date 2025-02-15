@@ -30,82 +30,96 @@ const CodeChefCard = () => {
 
   return (
     <>
-        <h2 className="text-2xl md:text-3xl lg:text-4xl text-red-400 font-bold mb-8 text-center">CodeChef Stats</h2>
-    <div className="container mx-auto max-w-4xl bg-black p-6 rounded-lg border border-gray-300 shadow-2xl shadow-indigo-500/40 text-white flex items-center">
-      {loading ? (
-          <p className="text-gray-400">Loading CodeChef stats...</p>
-        ) : error ? (
-        <p className="text-red-500">Error: {error}</p>
-      ) : (
-        <>
-          {/* Left Section - Profile Info */}
-          <div className="flex flex-col items-center w-1/3 p-4">
-            <img
-              src={data.profile}
-              alt="Profile"
-              className="w-24 h-24 rounded-full border-2 border-gray-300 shadow-2xl shadow-indigo-500/40"
-            />
-            <h3 className="text-xl font-bold mt-2">{data.name}</h3>
-            <img
-              src={data.countryFlag}
-              alt={data.countryName}
-              className="w-6 h-4 inline-block ml-2"
-            />
-            <p className="text-gray-300">Country: {data.countryName}</p>
-            <p className="text-yellow-400">Stars: {data.stars}</p>
-            <p className="text-gray-300">
-              Rating: {data.currentRating ?? "Not Available"}
-            </p>
-            <p className="text-gray-300">
-              Global Rank: {data.globalRank ?? "Not Available"}
-            </p>
-            <p className="text-gray-300">
-              Country Rank: {data.countryRank ?? "Not Available"}
-            </p>
-          </div>
+      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-red-400 font-bold mb-6 text-center">
+        CodeChef Stats
+      </h2>
 
-          {/* Right Section - Heatmap */}
-          {data.heatMap.length > 0 && (
-            <div className="w-2/3 p-4">
-              <h4 className="text-lg font-semibold text-green-400 text-center">
-                Activity Heatmap
-              </h4>
-              <Bar
-                data={{
-                  labels: data.heatMap.map((entry) => entry.date),
-                  datasets: [
-                      {
+      <div className="container mx-auto max-w-4xl bg-black p-4 sm:p-6 rounded-lg border border-gray-300 shadow-2xl shadow-indigo-500/40 text-white">
+        {loading ? (
+          <p className="text-gray-400 text-center">Loading CodeChef stats...</p>
+        ) : error ? (
+          <p className="text-red-500 text-center">Error: {error}</p>
+        ) : (
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+            {/* Left Section - Profile Info */}
+            <div className="w-full sm:w-1/2 md:w-1/3 flex flex-col items-center p-4">
+              <img
+                src={data.profile}
+                alt="Profile"
+                className="w-20 sm:w-24 h-20 sm:h-24 rounded-full border-2 border-gray-300 shadow-lg"
+              />
+              <h3 className="text-lg sm:text-xl font-bold mt-2">{data.name}</h3>
+              <div className="flex items-center gap-2">
+                <img
+                  src={data.countryFlag}
+                  alt={data.countryName}
+                  className="w-5 h-3"
+                />
+                <p className="text-gray-300 text-sm sm:text-base">{data.countryName}</p>
+              </div>
+              <p className="text-yellow-400 text-sm sm:text-base">Stars: {data.stars}</p>
+              <p className="text-gray-300 text-sm sm:text-base">
+                Rating: {data.currentRating ?? "N/A"}
+              </p>
+              <p className="text-gray-300 text-sm sm:text-base">
+                Global Rank: {data.globalRank ?? "N/A"}
+              </p>
+              <p className="text-gray-300 text-sm sm:text-base">
+                Country Rank: {data.countryRank ?? "N/A"}
+              </p>
+            </div>
+
+            {/* Right Section - Heatmap */}
+            {data.heatMap.length > 0 && (
+              <div className="w-full sm:w-1/2 md:w-2/3 p-4">
+                <h4 className="text-lg font-semibold text-green-400 text-center">
+                  Activity Heatmap
+                </h4>
+                <div className="overflow-x-auto">
+                  <Bar
+                    data={{
+                      labels: data.heatMap.map((entry) => entry.date),
+                      datasets: [
+                        {
                           label: "Submissions",
                           data: data.heatMap.map((entry) => entry.value),
                           backgroundColor: data.heatMap.map((entry) =>
                             entry.value > 5
-                          ? "rgba(255, 99, 132, 0.8)"
-                          : entry.value > 2
-                          ? "rgba(54, 162, 235, 0.8)"
-                          : "rgba(75, 192, 192, 0.8)"
-                      ),
-                      borderColor: "rgba(255, 255, 255, 0.8)",
-                      borderWidth: 1,
-                    },
-                  ],
-                }}
-                options={{
-                  responsive: true,
-                  plugins: {
-                    legend: { display: false },
-                },
-                  scales: {
-                    x: { grid: { display: false }, ticks: { color: "#ffffff" } },
-                    y: { beginAtZero: true, ticks: { color: "#ffffff" } },
-                },
-            }}
-              />
-            </div>
-          )}
-        </>
-      )}
-    </div>
-            </>
+                              ? "rgba(255, 99, 132, 0.8)"
+                              : entry.value > 2
+                              ? "rgba(54, 162, 235, 0.8)"
+                              : "rgba(75, 192, 192, 0.8)"
+                          ),
+                          borderColor: "rgba(255, 255, 255, 0.8)",
+                          borderWidth: 1,
+                        },
+                      ],
+                    }}
+                    options={{
+                      responsive: true,
+                      maintainAspectRatio: false,
+                      plugins: {
+                        legend: { display: false },
+                      },
+                      scales: {
+                        x: {
+                          grid: { display: false },
+                          ticks: { color: "#ffffff" },
+                        },
+                        y: {
+                          beginAtZero: true,
+                          ticks: { color: "#ffffff" },
+                        },
+                      },
+                    }}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
