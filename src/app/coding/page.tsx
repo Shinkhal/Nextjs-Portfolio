@@ -5,7 +5,7 @@ import BlurFade from "@/components/magicui/blur-fade";
 import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground } from "@/components/ui/stars-background";
 import LeetCodeCalendar from "@/components/Leetcode";
-import GeeksforGeeksStatsCard from "@/components/Geeksforgeeks";
+import CodeChefCard from "@/components/codechef";
 
 export default function Coding() {
   return (
@@ -36,7 +36,7 @@ export default function Coding() {
           <BlurFade delay={1} inView>
             <GitHubCalendarComponent username="Shinkhal" />
             <LeetCodeCalendar />
-            <GeeksforGeeksStatsCard />
+            <CodeChefCard/>
           </BlurFade>
         </section>
         <ShootingStars />

@@ -77,25 +77,46 @@ export const eduDetails = [
   }
 ];
 
-export const skills = [
-  { id: "HTML5_skill", content: "HTML5", percentage: 80 },
-  { id: "CSS3_skill", content: "CSS3", percentage: 75 },
-  { id: "JavaScript_skill", content: "JavaScript", percentage: 90 },
-  { id: "ReactJS_skill", content: "ReactJS", percentage: 80 },
-  { id: "TailwindCSS_skill", content: "Tailwind CSS", percentage: 65 },
-  { id: "Bootstrap_skill", content: "Bootstrap", percentage: 80 },
-  { id: "NodeJS_skill", content: "Node.js", percentage: 85 },
-  { id: "ExpressJS_skill", content: "Express.js", percentage: 80 },
-  { id: "Angular_skill", content: "Angular", percentage: 70 },
-  { id: "jQuery_skill", content: "jQuery", percentage: 75 },
-  { id: "DSA_skill", content: "DSA", percentage: 90 },
-  { id: "MongoDB_skill", content: "MongoDB", percentage: 85 },
-  { id: "MySQL_skill", content: "MySQL", percentage: 80 },
-  { id: "C_skill", content: "C", percentage: 85 },
-  { id: "Cpp_skill", content: "C++", percentage: 80 },
-  { id: "Java_skill", content: "Java", percentage: 75 },
-  { id: "Python_skill", content: "Python", percentage: 90 },
-];
+export const skills = {
+  "Frontend Development": [
+    { id: "HTML5_skill", content: "HTML5" },
+    { id: "CSS3_skill", content: "CSS3" },
+    { id: "JavaScript_skill", content: "JavaScript" },
+    { id: "ReactJS_skill", content: "ReactJS" },
+    { id: "ReactNative_skill", content: "React Native" },
+    { id: "NextJS_skill", content: "Next.js" },
+    { id: "Angular_skill", content: "Angular" },
+    { id: "TailwindCSS_skill", content: "Tailwind CSS" },
+    { id: "Bootstrap_skill", content: "Bootstrap" },
+    { id: "jQuery_skill", content: "jQuery" }
+  ],
+  "Backend Development": [
+    { id: "NodeJS_skill", content: "Node.js" },
+    { id: "ExpressJS_skill", content: "Express.js" },
+    { id: "PHP_skill", content: "PHP" },
+    { id: "RESTAPIs_skill", content: "REST APIs" }
+  ],
+  "Programming & CS Fundamentals": [
+    { id: "C_skill", content: "C" },
+    { id: "Cpp_skill", content: "C++" },
+    { id: "Java_skill", content: "Java" },
+    { id: "Python_skill", content: "Python" },
+    { id: "DSA_skill", content: "Data Structures & Algorithms" },
+    { id: "Competitive_Programming", content: "Competitive Programming" }
+  ],
+  "Databases & Cloud": [
+    { id: "MongoDB_skill", content: "MongoDB" },
+    { id: "MySQL_skill", content: "MySQL" },
+    { id: "Firebase_skill", content: "Firebase" },
+    { id: "AWS_skill", content: "AWS" },
+    { id: "Docker_skill", content: "Docker" }
+  ],
+  "Version Control & DevOps": [
+    { id: "Git_skill", content: "Git" },
+    { id: "GitHub_skill", content: "GitHub" }
+  ]
+};
+
 
 export const certifications = [
   { id: 1, title: "Cloud Computing With AWS", link: "https://drive.google.com/file/d/10yiShlZmrhnIsrg-Lov3WYmOhWnCVLSG/view?usp=sharing" },
@@ -151,7 +172,7 @@ export const projectDetails = [
     image: '/assets/projects/project11.png',  
     description: `Developed a bakery website that allows users to log in, book a table to dine-in, browse the menu, check prices, and view bakery details.`,
     techstack: "Vite+React, Node.js, MongoDB, JWT",
-    previewLink: "", // Provide the preview link
+    previewLink: "https://dwija-bake-studio.store/", // Provide the preview link
     githubLink: "https://github.com/Shinkhal/Cakes-N-Shape",
   },
   {
@@ -159,8 +180,8 @@ export const projectDetails = [
     image: '/assets/projects/project12.png',  // Replace with actual image path
     description: `A car rental website built with PHP, allowing users to browse available cars, make reservations, and manage bookings.`,
     techstack: "PHP, MySQL, HTML, CSS",
-    previewLink: "https://keydrive.com", // Provide the preview link
-    githubLink: "https://github.com/Shinkhal/KeyDrive",
+    previewLink: "", // Provide the preview link
+    githubLink: "https://github.com/Shinkhal/Car-rental",
   },
   {
     title: "Restaurant Table Booking",
@@ -175,7 +196,7 @@ export const projectDetails = [
     image: '/assets/projects/project1.png',
     description: `Discover my portfolio—an interactive showcase of projects, skills, and contact information. Explore live project previews and GitHub repositories to see my work in action.`,
     techstack: "React.js, Node.js, Tailwind css",
-    previewLink: "https://shinkhal-sinha.online",
+    previewLink: "https://apurwasharma.site/",
     githubLink: "https://github.com/Web-Dev-Protfolio",
   },
   

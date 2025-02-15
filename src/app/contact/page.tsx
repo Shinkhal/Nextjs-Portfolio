@@ -23,24 +23,12 @@ export default function Contact() {
     });
   };
 
-  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   try {
-  //     await axios.post("https://portfoliobackend-production-0c9f.up.railway.app/api/send-email", formData);
-  //     setSubmitted(true);
-  //     setRedirecting(true);
-  //   } catch (error) {
-  //     console.error("There was an error sending the email!", error);
-  //   }
-  // };
-
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     setResult("Sending....");
     const formData = new FormData(event.target);
 
-    formData.append("access_key", "9c9ac32f-60e8-4ac1-9412-35b77ebff40d");
+    formData.append("access_key", "f6ce326c-76ff-4820-8f84-23b8bcd6d71b");
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -101,7 +89,7 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Enter your name"
-                    className="mt-1 block w-full rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 bg-black text-white bg-opacity-20 backdrop-blur-md py-3 px-4"
+                    className="mt-1 block w-full rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 bg-black text-white bg-opacity-20 backdrop-blur-md py-3 px-4 border border-gray-400"
                     required
                   />
                 </div>
@@ -114,7 +102,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Enter your email"
-                    className="mt-1 block w-full rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 bg-black text-white bg-opacity-20 backdrop-blur-md py-3 px-4"
+                    className="mt-1 block w-full rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 bg-black text-white bg-opacity-20 backdrop-blur-md py-3 px-4 border border-gray-400"
                     required
                   />
                 </div>
@@ -127,7 +115,7 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="Type your message here..."
                     rows={4}
-                    className="mt-1 block w-full rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 bg-black text-white bg-opacity-20 backdrop-blur-md resize-none py-3 px-4"
+                    className="mt-1 block w-full rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 bg-black text-white bg-opacity-20 backdrop-blur-md resize-none py-3 px-4 border border-gray-400"
                     required
                   ></textarea>
                 </div>
@@ -153,26 +141,9 @@ export default function Contact() {
           </div>
         </BlurFade>
 
-        {/* Animation Styles */}
-        <style jsx>{`
-          @keyframes fade-in {
-            from {
-              opacity: 0;
-            }
-            to {
-              opacity: 1;
-            }
-          }
-
-          .animate-fade-in {
-            animation: fade-in 1s ease-in-out;
-          }
-        `}</style>
-
-        {/* Background Effects */}
         <ShootingStars />
         <StarsBackground />
       </main>
     </>
-  );
-}
+    );
+  }
