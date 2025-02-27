@@ -6,6 +6,7 @@ import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground } from "@/components/ui/stars-background";
 import LeetCodeCalendar from "@/components/Leetcode";
 import CodeChefCard from "@/components/codechef";
+import CodeforcesCard from "@/components/CodeForces";
 
 export default function Coding() {
   return (
@@ -37,6 +38,7 @@ export default function Coding() {
             <GitHubCalendarComponent username="Shinkhal" />
             <LeetCodeCalendar />
             <CodeChefCard/>
+            <CodeforcesCard/>
           </BlurFade>
         </section>
         <ShootingStars />

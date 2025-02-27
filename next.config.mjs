@@ -7,6 +7,7 @@ const nextConfig = {
     images: {
       domains: ['assets.aceternity.com',
         'aceternity.com',
+        'userpic.codeforces.org'
 
       ],
     },
