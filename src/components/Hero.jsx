@@ -28,11 +28,11 @@ function HeroSection() {
           Hey, I&apos;m
         </h3>
         <HyperText
-          className="bg-clip-text bg-gradient-to-r from-orange-800 to-red-600 text-transparent font-bold"
+          className="bg-clip-text bg-orange-950 text-transparent font-bold"
           text="Shinkhal Sinha"
         />
-        <h2 className="text-3xl md:text-4xl lg:text-6xl text-white font-bold mt-4 font-montserrat">
-          <span className="text-cyan-400 transition-opacity duration-500 ease-in-out">
+        <h2 className="text-xl md:text-3xl lg:text-4xl text-white font-bold mt-4 font-montserrat">
+          <span className="text-white transition-opacity duration-500 ease-in-out">
             {roles[currentRoleIndex]}
           </span>
         </h2>
@@ -40,7 +40,7 @@ function HeroSection() {
         <a
   href="/api/download-cv"
   aria-label="Download CV of Shinkhal Sinha"
-  className="cursor-pointer flex items-center bg-gray-800 px-4 py-2 rounded-full text-white tracking-wider shadow-xl hover:bg-gray-900 hover:scale-105 transition-all duration-500 hover:ring-1 font-mono w-[160px]"
+  className="cursor-pointer flex items-center bg-gray-800 px-4 py-2 rounded-full text-white tracking-wider shadow-xl hover:bg-gray-900 hover:scale-105 transition-all duration-500 hover:ring-1 font-mono w-[180px]"
 >
   Download CV
   <svg

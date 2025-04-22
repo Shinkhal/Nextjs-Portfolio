@@ -7,18 +7,15 @@ import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground } from "@/components/ui/stars-background";
 import Profilelinks from "@/components/Profilelink";
 
-
 export default function Home() {
   return (
     <>
       <Head>
-        {/* Basic Meta Tags */}
         <title>Shinkhal Sinha | Web Developer & Designer</title>
         <meta name="description" content="I'm Shinkhal Sinha, a web developer and designer specializing in creating innovative web solutions with modern technologies like React, Next.js, and Tailwind CSS." />
         <meta name="keywords" content="Shinkhal Sinha, web developer, portfolio, React developer, Next.js developer, frontend developer, Nodejs developer" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        {/* Open Graph Meta Tags */}
         <meta property="og:title" content="Shinkhal Sinha | Web Developer & Designer" />
         <meta property="og:description" content="Explore my portfolio of innovative web projects built with modern technologies." />
         <meta property="og:url" content="https://shinkhal-sinha.online" />

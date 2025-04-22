@@ -1,14 +1,31 @@
 "use client";
 import { useState } from "react";
 import Head from "next/head";
-import { MovingCards } from "@/components/movingcads";  
-import { skills, certifications } from "@/details";
+import {MovingCards} from "@/components/movingcads";
+import {SkillsGrid} from "@/components/SkillsGrid";
+import { skills,certifications } from "@/details";
 import BlurFade from "@/components/magicui/blur-fade";
 import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground } from "@/components/ui/stars-background";
+import { motion } from "framer-motion";
+import { Award, Calendar, ExternalLink } from "lucide-react";
 
 export default function Skills() {
   const [selectedTab, setSelectedTab] = useState("skills");
+
+  const tabVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5 }
+    },
+    exit: { 
+      opacity: 0,
+      y: -20,
+      transition: { duration: 0.3 }
+    }
+  };
 
   return (
     <>
@@ -20,63 +37,82 @@ export default function Skills() {
         />
       </Head>
 
-      <main className="container mx-auto pt-10 pb-20 px-4 sm:px-6 lg:px-8">
-        {/* Section Title */}
-        <h1 className="text-4xl md:text-5xl font-bold text-red-400 font-montserrat mb-8">
-          Technical Proficiencies & Certifications
-        </h1>
+      <main className="container mx-auto pt-10 pb-20 px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Title with Animation */}
+        <BlurFade delay={0.2} inView>
+          <h1 className="text-4xl md:text-5xl font-bold text-red-400 font-montserrat mb-8">
+            Technical Proficiencies & Certifications
+          </h1>
+        </BlurFade>
 
         {/* Description */}
         <BlurFade delay={0.5} inView>
-          <p className="text-lg text-gray-300">
-            Welcome to my skills showcase! Here, you will find a detailed
-            overview of my technical skills and certifications.
+          <p className="text-lg text-gray-300 mb-10 max-w-3xl">
+            Welcome to my skills showcase! Here, you&apos;ll find a detailed
+            overview of my technical expertise and professional certifications that
+            demonstrate my commitment to continuous learning and professional growth.
           </p>
         </BlurFade>
 
-        <div className="flex gap-4 mt-8">
-          <button
-            className={`px-6 py-2 text-lg font-medium rounded-lg transition ${
-              selectedTab === "skills"
-                ? "bg-red-500 text-white"
-                : "bg-gray-800 text-gray-400 hover:bg-gray-700"
-            }`}
-            onClick={() => setSelectedTab("skills")}
-          >
-            Skills
-          </button>
-          <button
-            className={`px-6 py-2 text-lg font-medium rounded-lg transition ${
-              selectedTab === "certifications"
-                ? "bg-red-500 text-white"
-                : "bg-gray-800 text-gray-400 hover:bg-gray-700"
-            }`}
-            onClick={() => setSelectedTab("certifications")}
-          >
-            Certifications
-          </button>
-        </div>
+        {/* Tab Navigation */}
+        <BlurFade delay={0.7} inView>
+          <div className="flex flex-wrap gap-4 mt-8 mb-12">
+            <button
+              className={`px-6 py-3 text-lg font-medium rounded-lg transition-all duration-300 flex items-center gap-2 ${
+                selectedTab === "skills"
+                  ? "bg-red-500 text-white shadow-lg shadow-red-500/20"
+                  : "bg-gray-800/50 text-gray-300 hover:bg-gray-700/70 border border-gray-700/50"
+              }`}
+              onClick={() => setSelectedTab("skills")}
+            >
+              <span className="w-2 h-2 rounded-full bg-white inline-block"></span>
+              Skills
+            </button>
+            <button
+              className={`px-6 py-3 text-lg font-medium rounded-lg transition-all duration-300 flex items-center gap-2 ${
+                selectedTab === "certifications"
+                  ? "bg-red-500 text-white shadow-lg shadow-red-500/20"
+                  : "bg-gray-800/50 text-gray-300 hover:bg-gray-700/70 border border-gray-700/50"
+              }`}
+              onClick={() => setSelectedTab("certifications")}
+            >
+              <span className="w-2 h-2 rounded-full bg-white inline-block"></span>
+              Certifications
+            </button>
+          </div>
+        </BlurFade>
 
-        {selectedTab === "skills" && (
-          <section className="mt-10">
-            <MovingCards /> 
-          </section>
-        )}
+        {/* Content Area with Animation */}
+        <motion.div
+          key={selectedTab}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          variants={tabVariants}
+        >
+          {selectedTab === "skills" && (
+            <section>
+              <SkillsGrid  /> 
+            </section>
+          )}
 
-        {/* Certifications Section */}
-        {selectedTab === "certifications" && (
-          <section className="mt-10">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {certifications.map((cert) => (
-                <CertificationCard
-                  key={cert.id}
-                  title={cert.title}
-                  link={cert.link}
-                />
-              ))}
-            </div>
-          </section>
-        )}
+          {/* Certifications Section */}
+          {selectedTab === "certifications" && (
+            <section>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {certifications.map((cert) => (
+                  <CertificationCard
+                    key={cert.id}
+                    title={cert.title}
+                    link={cert.link}
+                    issuer={cert.issuer}
+                    date={cert.issueDate}
+                  />
+                ))}
+              </div>
+            </section>
+          )}
+        </motion.div>
 
         <ShootingStars />
         <StarsBackground />
@@ -85,18 +121,50 @@ export default function Skills() {
   );
 }
 
-// Certification Card Component
-const CertificationCard: React.FC<{ title: string; link: string }> = ({
+// Enhanced Certification Card Component
+const CertificationCard = ({
   title,
   link,
+  issuer = "Certification Authority",
+  date = "2023",
 }) => {
   return (
-    <div
-      className="border p-4 cursor-pointer transition duration-300 rounded-xl shadow-lg hover:scale-105 hover:shadow-2xl"
-      onClick={() => window.open(link, "_blank")}
+    <motion.div
+      whileHover={{ y: -8, scale: 1.02 }}
+      transition={{ duration: 0.3 }}
+      className="relative overflow-hidden rounded-xl backdrop-blur-sm bg-gray-800/30 border border-gray-700/50 hover:border-red-400/50 shadow-lg transition-all duration-300"
     >
-      <h3 className="text-lg font-semibold text-white">{title}</h3>
-      <p className="text-sm text-gray-400">Click to view certificate</p>
-    </div>
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-red-300"></div>
+      
+      <div className="p-6 flex flex-col h-full">
+        <div className="flex items-start gap-4 mb-4">
+          
+          
+          <h3 className="text-lg font-semibold text-white flex-grow">{title}</h3>
+        </div>
+        
+        <div className="space-y-3 mt-auto">
+          <div className="flex items-center gap-2 text-gray-300">
+            <Award size={16} className="text-red-400" />
+            <span className="text-sm">{issuer}</span>
+          </div>
+          
+          <div className="flex items-center gap-2 text-gray-300">
+            <Calendar size={16} className="text-red-400" />
+            <span className="text-sm">{date}</span>
+          </div>
+          
+          <a 
+            href={link} 
+            target="_blank"
+            rel="noopener noreferrer" 
+            className="inline-flex items-center gap-2 mt-4 text-red-400 hover:text-red-300 transition-colors"
+          >
+            <span>View Certificate</span>
+            <ExternalLink size={16} />
+          </a>
+        </div>
+      </div>
+    </motion.div>
   );
 };

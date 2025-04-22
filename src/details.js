@@ -21,6 +21,7 @@ export const socialMediaUrl = {
 // Enter your Work Experience here
 export const workDetails = [
   {
+    logo: '/assets/outlier.png',
     Position: "Gen AI Coder",
     Company: "Outlier",
     Location: "Work from home",
@@ -28,6 +29,7 @@ export const workDetails = [
     Duration: "October 2024 - Present"
   },
   {
+    logo: '/assets/beasova.webp',
     Position: "Web Developer Intern",
     Company: "Beasova (AICTE)",
     Location: "Work from home",
@@ -35,13 +37,7 @@ export const workDetails = [
     Duration: "August 2024 - September 2024"
   },
   {
-    Position: "Web Developer Intern",
-    Company: "CognoRise Infotech",
-    Location: "Work from home",
-    Type: "Internship",
-    Duration: "August 2024 - September 2024"
-  },
-  {
+    logo: '/assets/labdox.png',
     Position: "Graphic Designer",
     Company: "Labdox",
     Location: "Work from home",
@@ -55,6 +51,7 @@ export const workDetails = [
 // Enter your Education Details here
 export const eduDetails = [
   {
+    logo: '/assets/lpu.png',
     Course: "Bachelor of Technology (B.Tech)",
     Branch: "Computer Science and Engineering",
     Institute: "LoveLy Professional University",
@@ -62,6 +59,7 @@ export const eduDetails = [
     Duration: "2022 - 2026",
   },
   {
+    logo: '/assets/dps.png',
     Course: "Senior Secondary Education",
     Branch:"CBSE",
     Institute: "Secondary Delhi Public School",
@@ -69,6 +67,7 @@ export const eduDetails = [
     Duration: "2020- 2022"
   },
   {
+    logo: '/assets/nazareth.png',
     Course: "Secondary Education",
     Branch:"CBSE",
     Institute: "Nazareth Academy",
@@ -78,7 +77,7 @@ export const eduDetails = [
 ];
 
 export const skills = {
-  "Frontend Development": [
+  "Frontend": [
     { id: "HTML5_skill", content: "HTML5" },
     { id: "CSS3_skill", content: "CSS3" },
     { id: "JavaScript_skill", content: "JavaScript" },
@@ -90,13 +89,13 @@ export const skills = {
     { id: "Bootstrap_skill", content: "Bootstrap" },
     { id: "jQuery_skill", content: "jQuery" }
   ],
-  "Backend Development": [
+  "Backend": [
     { id: "NodeJS_skill", content: "Node.js" },
     { id: "ExpressJS_skill", content: "Express.js" },
     { id: "PHP_skill", content: "PHP" },
     { id: "RESTAPIs_skill", content: "REST APIs" }
   ],
-  "Programming & CS Fundamentals": [
+  "Programming": [
     { id: "C_skill", content: "C" },
     { id: "Cpp_skill", content: "C++" },
     { id: "Java_skill", content: "Java" },
@@ -104,43 +103,123 @@ export const skills = {
     { id: "DSA_skill", content: "Data Structures & Algorithms" },
     { id: "Competitive_Programming", content: "Competitive Programming" }
   ],
-  "Databases & Cloud": [
+  "Infrastructure": [
     { id: "MongoDB_skill", content: "MongoDB" },
     { id: "MySQL_skill", content: "MySQL" },
     { id: "Firebase_skill", content: "Firebase" },
     { id: "AWS_skill", content: "AWS" },
-    { id: "Docker_skill", content: "Docker" }
-  ],
-  "Version Control & DevOps": [
+    { id: "Docker_skill", content: "Docker" },
     { id: "Git_skill", content: "Git" },
     { id: "GitHub_skill", content: "GitHub" }
   ]
 };
 
 
+
 export const certifications = [
-  { id: 1, title: "Cloud Computing With AWS", link: "https://drive.google.com/file/d/10yiShlZmrhnIsrg-Lov3WYmOhWnCVLSG/view?usp=sharing" },
-  {id: 2, title: "Oracle Cloud Infrastructure 2024 Generative AI Professional", link :"https://drive.google.com/file/d/1x0b2YghLX0xKmrTn3ogHmuSuu2N3zSVN/view?usp=sharing"},
-  { id: 3, title: "React Basics -  Meta", link: "https://coursera.org/share/01084822bc72f8fd52723b8b0b818469" },
-  { id: 4, title: "The Full Stack - Meta", link: "https://coursera.org/share/d7747531acf11717b7a35132d4e9af86" },
-  { id: 5, title:"Server side JavaScript with Node.js",link:"https://coursera.org/share/eb652d49afd4a62c888e2948d539ba86"},
-  { id: 7,title:"Programming in C++",link:"https://coursera.org/share/2b141ebe967096edadf49b465324e171"},
-  { id: 8, title:"Python Basics - HackerRank", link:"https://www.hackerrank.com/certificates/a6ff7f090c6e"},
-  { id: 9, title:"Dynamic Programming,Greedy Algorithm", link:"https://coursera.org/share/3133e5feef011f808a1c5ed0ffe46555"},
-  { id: 10, title:"Approximation Algorithms and Linear Programming", link:"https://coursera.org/share/790380c56167ca775372199ae5e265bd"},
-  { id: 11, title:"Generative AI with Large Language Models", link:"https://coursera.org/share/3623ad857b20e3fa98a442285a4fecae"},
-  { id: 12, title:"Prompt Engineering for ChatGPT", link:"https://coursera.org/share/b49db0f9515db30c879a1541658d7ae8"}
-  // Add more certifications
+  { 
+    id: 1, 
+    title: "Cloud Computing With AWS", 
+    link: "https://drive.google.com/file/d/10yiShlZmrhnIsrg-Lov3WYmOhWnCVLSG/view?usp=sharing",
+    issuer: "Amazon Web Services",
+    issueDate: "2024",
+  },
+  {
+    id: 2, 
+    title: "Oracle Cloud Infrastructure 2024 Generative AI Professional", 
+    link: "https://drive.google.com/file/d/1x0b2YghLX0xKmrTn3ogHmuSuu2N3zSVN/view?usp=sharing",
+    issuer: "Oracle",
+    issueDate: "2024",
+  },
+  { 
+    id: 3, 
+    title: "React Basics", 
+    link: "https://coursera.org/share/01084822bc72f8fd52723b8b0b818469",
+    issuer: "Meta",
+    issueDate: "2023",
+  },
+  { 
+    id: 4, 
+    title: "The Full Stack", 
+    link: "https://coursera.org/share/d7747531acf11717b7a35132d4e9af86",
+    issuer: "Meta",
+    issueDate: "2023",
+  },
+  { 
+    id: 5, 
+    title: "Server side JavaScript with Node.js",
+    link: "https://coursera.org/share/eb652d49afd4a62c888e2948d539ba86",
+    issuer: "Coursera",
+    issueDate: "2024",
+  },
+  { 
+    id: 7,
+    title: "Programming in C++",
+    link: "https://coursera.org/share/2b141ebe967096edadf49b465324e171",
+    issuer: "Coursera",
+    issueDate: "2023",
+  },
+  { 
+    id: 8, 
+    title: "Python Basics", 
+    link: "https://www.hackerrank.com/certificates/a6ff7f090c6e",
+    issuer: "HackerRank",
+    issueDate: "2022",
+  },
+  { 
+    id: 9, 
+    title: "Dynamic Programming & Greedy Algorithms", 
+    link: "https://coursera.org/share/3133e5feef011f808a1c5ed0ffe46555",
+    issuer: "Coursera",
+    issueDate: "2024",
+  },
+  { 
+    id: 10, 
+    title: "Approximation Algorithms and Linear Programming", 
+    link: "https://coursera.org/share/790380c56167ca775372199ae5e265bd",
+    issuer: "Coursera",
+    issueDate: "2024",
+  },
+  { 
+    id: 11, 
+    title: "Generative AI with Large Language Models", 
+    link: "https://coursera.org/share/3623ad857b20e3fa98a442285a4fecae",
+    issuer: "DeepLearning.AI",
+    issueDate: "2024",
+  },
+  { 
+    id: 12, 
+    title: "Prompt Engineering for ChatGPT", 
+    link: "https://coursera.org/share/b49db0f9515db30c879a1541658d7ae8",
+    issuer: "DeepLearning.AI",
+    issueDate: "2024",
+  }
 ];
 
 // Enter your Project Details here
 export const projectDetails = [
   {
-    title: "Movie Search App",
+    title: "Job Autofill",
+    image: "/assets/projects/project14.png", 
+    description: `A modern web application that simplifies the job application process. Users can update their profile once, and the platform auto-fills job applications, generates LaTeX resumes with multiple templates, and includes a light/dark mode toggle.`,
+    techstack: "Next.js, TypeScript, Tailwind CSS, shadcn/ui, Firebase, MongoDB, OpenAI API",
+    previewLink: "https://autofill-job.vercel.app/", 
+    githubLink: "https://github.com/Shinkhal/autofill",
+  },  
+  {
+    title: "Cancer Prediction",
+    image: "/assets/projects/project13.png", 
+    description: `A web-based cancer prediction platform focused on thyroid cancer. It features ML-based diagnosis using user input, real-time news updates, a Tableau dashboard, and an AI-powered chatbot for information. Users can also leave testimonials and subscribe to newsletters.`,
+    techstack: "React+Vite, Tailwind CSS, shadcn/ui, Python, Scikit-learn, Firebase, Tableau, NewsAPI",
+    previewLink: "https://thyroidcancer.vercel.app/",
+    githubLink: "https://github.com/Shinkhal/Cancer-Prediction",
+  },   
+  {
+    title: "MovieQuest",
     image: '/assets/projects/project8.png',
-    description: `Created a simple movie search app that fetches data from a movie database API and displays the results in a user-friendly interface, with real-time search suggestions and optimized input handling.`,
-    techstack: "Nextjs, Tailwind Css, Typescript",
-    previewLink: "https://movie-quest-app.vercel.app/",
+    description: `A movie recommendation platform where the users can see trending and latest movies , search for their fav movie and stream it or Pick a movie from different genres to watch`,
+    techstack: "Nextjs, Tailwind CSS, Typescript",
+    previewLink: "https://movies-quest.vercel.app/",
     githubLink: "https://github.com/Shinkhal/Movie-Quest",
   },
   {
@@ -152,6 +231,13 @@ export const projectDetails = [
     githubLink: "https://github.com/Shinkhal/Nextjs-Portfolio",
   },
   {
+    title: "QuickEats",
+    image: "/assets/projects/project15.png", // Replace with the actual image path
+    description: `A full-featured MERN stack food ordering platform where users can browse food items, place orders with integrated payments, and receive real-time updates via email. It also includes a powerful admin dashboard for order management, lead tracking, CRM insights, inventory control, and email-based communication with users using an SMTP server.`,
+    techstack: "MERN, JWT, SMTP, Payment Gateway",
+    githubLink: "https://github.com/Shinkhal/QuickEats",
+  },  
+  {
     title: "Farmease App",
     image: '/assets/projects/project10.png',
     description: `A mobile application connecting farmers directly with consumers and retailers. The app includes AI/ML features to enhance user experience and optimize operations.`,
@@ -159,6 +245,14 @@ export const projectDetails = [
     previewLink: "https://farmease-app.com/",
     githubLink: "https://github.com/Shinkhal/Farmease",
   },
+  {
+    title: "Weather Dashboard",
+    image: "/assets/projects/project14.png", // Replace with the actual image path
+    description: `A modern weather dashboard built with Next.js, ShadCN, and Tailwind CSS. The app provides real-time current weather and 5-day forecasts using the OpenWeatherMap API. Features include dark/light mode toggle, recent search history (last 5 searches), and a responsive, modern UI.`,
+    techstack: "Next.js, Tailwind CSS, ShadCN/UI, OpenWeatherMap API, next-themes, localStorage",
+    previewLink: "https://weather-dashboard-navy-tau.vercel.app/",
+    githubLink: "https://github.com/Shinkhal/Weather-Dashboard",
+  },  
   {
     title: "GeeksForGeeks Api",
     image: '/assets/projects/project7.png',
@@ -168,7 +262,7 @@ export const projectDetails = [
     githubLink: "https://github.com/Shinkhal/gfg_api",
   },
   {
-    title: "Cakes N Shapes (Bakery Website)",
+    title: "Cakes N Shapes",
     image: '/assets/projects/project11.png',  
     description: `Developed a bakery website that allows users to log in, book a table to dine-in, browse the menu, check prices, and view bakery details.`,
     techstack: "Vite+React, Node.js, MongoDB, JWT",
@@ -191,6 +285,7 @@ export const projectDetails = [
     previewLink: "https://cusine.feista-flavours.infinityfreeapp.com",
     githubLink: "https://github.com/Shinkhal/Feista-Flavours",
   },
+
   {
     title: "Portfolio",
     image: '/assets/projects/project1.png',
@@ -209,12 +304,20 @@ export const projectDetails = [
     previewLink: "", // Provide a placeholder if there's no preview link
   },
   {
+    title: "Global Craft Hub",
+    image: "/assets/projects/project0.png",
+    description: `A responsive e-commerce platform showcasing unique crafts from around the world. Features include a homepage with featured crafts, an about page detailing the mission and values, a shop page to browse and explore available crafts, a cart page to manage items, a login page for personalized access, and a contact page for inquiries.`,
+    techstack: "HTML, CSS, JavaScript",
+    previewLink: "https://global-craft-hub.netlify.app/", // Replace with actual deployment link if available
+    githubLink: "https://github.com/Shinkhal/global-craft-hub",
+  },  
+  {
     title: "UMS Website",
     image: '/assets/projects/project4.png',
     description: `Crafted a user-friendly University Management System website. A comprehensive university student portal to view teacher messages, academic updates, timetable, fees, assignments, attendance, and more.`,
     techstack: "HTML/CSS, JavaScript",
     githubLink: "https://github.com/Shinkhal/UMS",
-    previewLink: "", // Provide a placeholder if there's no preview link
+    previewLink: "", 
   },
   {
     title: "Logos And Posters",

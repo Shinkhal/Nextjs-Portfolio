@@ -24,6 +24,7 @@ export default function Contact() {
   };
 
   const handleSubmit = async (event) => {
+    result;
     event.preventDefault();
     setResult("Sending....");
     const formData = new FormData(event.target);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-const CodeforcesCard = () => {
+const CodeforcesCard = ({ handle = "shinkhal" }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -10,7 +10,7 @@ const CodeforcesCard = () => {
     const fetchCodeforcesStats = async () => {
       try {
         const response = await fetch(
-          "https://codeforces.com/api/user.info?handles=shinkhal"
+          `https://codeforces.com/api/user.info?handles=${handle}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch Codeforces data");
@@ -25,59 +25,140 @@ const CodeforcesCard = () => {
     };
 
     fetchCodeforcesStats();
-  }, []);
+  }, [handle]);
+  
+  // Helper function to determine rank color
+  const getRankColor = (rank) => {
+    if (!rank) return "text-gray-400";
+    
+    const rankColors = {
+      'newbie': 'text-gray-400',
+      'pupil': 'text-green-500',
+      'specialist': 'text-cyan-500',
+      'expert': 'text-blue-500',
+      'candidate master': 'text-purple-500',
+      'master': 'text-orange-500',
+      'international master': 'text-orange-400',
+      'grandmaster': 'text-red-500',
+      'international grandmaster': 'text-red-600',
+      'legendary grandmaster': 'text-red-700'
+    };
+    
+    return rankColors[rank.toLowerCase()] || 'text-white';
+  };
 
   return (
-    <main className='container mx-auto max-w-screen-xl pb-20 mt-10 backdrop-blur-lg'>
+    <section className="rounded-xl border border-gray-800 bg-black/50 p-6 shadow-lg backdrop-blur-sm">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-center text-purple-400">
+        CodeForces Stats
+      </h2>
 
-      <h2 className="text-2xl md:text-3xl lg:text-4xl text-red-400 font-bold mb-8 text-center">CodeForces Stats</h2>
-    <div className="max-w-md mx-auto p-8 bg-black border border-gray-300 shadow-2xl shadow-indigo-500/40 rounded-lg text-white">
       {loading ? (
-          <p className="text-gray-400 text-center">Loading...</p>
-        ) : error ? (
-            <p className="text-red-400 text-center">Error: {error}</p>
-        ) : (
-            <div className="flex flex-col items-center gap-6">
-          <div className="relative w-28 h-28">
-            <Image
-              src={data.titlePhoto}
-              alt="Profile"
-              layout="fill"
-              className="rounded-full border-4 border-white shadow-lg"
-              />
+        <div className="text-center py-8">
+          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-purple-400 border-r-transparent"></div>
+          <p className="mt-4 text-gray-400">Loading CodeForces stats...</p>
+        </div>
+      ) : error ? (
+        <div className="text-center py-8">
+          <p className="text-red-500">Error: {error}</p>
+          <p className="mt-2 text-gray-400">Unable to load CodeForces statistics</p>
+        </div>
+      ) : (
+        <div className="flex flex-col md:flex-row md:items-stretch gap-6">
+          <div className="w-full md:w-1/3 bg-gray-900/60 rounded-lg p-6 flex flex-col items-center">
+            {data.titlePhoto && (
+              <div className="w-24 h-24 mb-4 relative overflow-hidden rounded-full border-2 border-gray-700">
+                <Image
+                  src={data.titlePhoto}
+                  alt={data.handle}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+            )}
+            
+            <h3 className="text-xl font-bold">{data.handle}</h3>
+            <p className="text-gray-400 mb-4">{data.firstName || ""} {data.lastName || ""}</p>
+            
+            <div className={`text-lg font-medium ${getRankColor(data.rank)}`}>
+              {data.rank || "Unranked"}
+            </div>
+            <div className="text-2xl font-bold mt-1">
+              {data.rating || "N/A"}
+            </div>
           </div>
-          <h3 className="text-2xl font-bold text-white">{data.handle}</h3>
-          <p className="text-lg text-gray-300">{data.firstName || "N/A"}</p>
-          <div className="grid grid-cols-2 gap-4 text-center mt-4">
-            <div className="bg-gray-800 p-4 rounded-lg shadow-md">
-              <p className="text-sm text-gray-400">Rank</p>
-              <p className="text-lg text-yellow-300 font-semibold">{data.rank}</p>
-            </div>
-            <div className="bg-gray-800 p-4 rounded-lg shadow-md">
-              <p className="text-sm text-gray-400">Rating</p>
-              <p className="text-lg text-green-300 font-semibold">{data.rating}</p>
-            </div>
-            <div className="bg-gray-800 p-4 rounded-lg shadow-md">
-              <p className="text-sm text-gray-400">Max Rank</p>
-              <p className="text-lg text-purple-300 font-semibold">{data.maxRank}</p>
-            </div>
-            <div className="bg-gray-800 p-4 rounded-lg shadow-md">
-              <p className="text-sm text-gray-400">Max Rating</p>
-              <p className="text-lg text-pink-300 font-semibold">{data.maxRating}</p>
-            </div>
-            <div className="bg-gray-800 p-4 rounded-lg shadow-md">
-              <p className="text-sm text-gray-400">Contribution</p>
-              <p className="text-lg text-white font-semibold">{data.contribution}</p>
-            </div>
-            <div className="bg-gray-800 p-4 rounded-lg shadow-md">
-              <p className="text-sm text-gray-400">Friends</p>
-              <p className="text-lg text-white font-semibold">{data.friendOfCount}</p>
+          
+          <div className="w-full md:w-2/3 bg-gray-900/60 rounded-lg p-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              <div className="p-4 text-center rounded bg-gray-800/50">
+                <p className="text-sm text-gray-400">Max Rating</p>
+                <p className={`text-lg font-bold ${getRankColor(data.maxRank)}`}>
+                  {data.maxRating || "N/A"}
+                </p>
+                <p className="text-xs text-gray-500">
+                  {data.maxRank || ""}
+                </p>
+              </div>
+              
+              <div className="p-4 text-center rounded bg-gray-800/50">
+                <p className="text-sm text-gray-400">Contribution</p>
+                <p className={`text-lg font-bold ${data.contribution >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+                  {data.contribution || "0"}
+                </p>
+              </div>
+              
+              <div className="p-4 text-center rounded bg-gray-800/50">
+                <p className="text-sm text-gray-400">Friends</p>
+                <p className="text-lg font-bold">
+                  {data.friendOfCount || "0"}
+                </p>
+              </div>
+              
+              {data.organization && (
+                <div className="p-4 text-center rounded bg-gray-800/50">
+                  <p className="text-sm text-gray-400">Organization</p>
+                  <p className="text-lg font-bold">
+                    {data.organization}
+                  </p>
+                </div>
+              )}
+              
+              {data.country && (
+                <div className="p-4 text-center rounded bg-gray-800/50">
+                  <p className="text-sm text-gray-400">Country</p>
+                  <p className="text-lg font-bold">
+                    {data.country}
+                  </p>
+                </div>
+              )}
+              
+              {data.city && (
+                <div className="p-4 text-center rounded bg-gray-800/50">
+                  <p className="text-sm text-gray-400">City</p>
+                  <p className="text-lg font-bold">
+                    {data.city}
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
       )}
-    </div>
-      </main>
+      
+      <div className="mt-6 text-center">
+        <a 
+          href={`https://codeforces.com/profile/${handle}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center text-purple-400 hover:text-purple-300"
+        >
+          <span>View my CodeForces profile</span>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+      </div>
+    </section>
   );
 };
 

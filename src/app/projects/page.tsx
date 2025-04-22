@@ -1,8 +1,7 @@
 "use client";
 import React from "react";
 import Head from 'next/head'; // Import Head for SEO
-import { HeroParallax } from "@/components/ui/hero-parallax";
-import { projectDetails } from "@/details";
+
 import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground } from "@/components/ui/stars-background";
 import { ThreeDCardDemo } from "@/components/card";
@@ -19,7 +18,6 @@ export default function Projects() {
         <meta property="og:url" content="https://shinkhal-sinha.online/projects" />
         <meta name="twitter:card" content="summary" /> {/* No image, so using summary */}
       </Head>
-      <HeroParallax projects={projectDetails} />
       <ThreeDCardDemo />
       <ShootingStars />
       <StarsBackground />
