@@ -22,7 +22,7 @@ export default function Home() {
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
-        const response = await fetch('https://api.codolio.com/profile?userKey=shinkhal');
+        const response = await fetch('/api/fetchprofile');
         const data = await response.json();
         setProfileData(data.data);
         setLoading(false);
@@ -31,9 +31,10 @@ export default function Home() {
         setLoading(false);
       }
     };
-
+  
     fetchProfileData();
   }, []);
+  
 
   const handlePlatformSelect = useCallback((platform) => {
     setSelectedPlatform(platform === selectedPlatform ? null : platform);

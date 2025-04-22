@@ -1,9 +1,8 @@
 "use client";
 import { useState } from "react";
 import Head from "next/head";
-import {MovingCards} from "@/components/movingcads";
 import {SkillsGrid} from "@/components/SkillsGrid";
-import { skills,certifications } from "@/details";
+import { certifications } from "@/details";
 import BlurFade from "@/components/magicui/blur-fade";
 import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground } from "@/components/ui/stars-background";

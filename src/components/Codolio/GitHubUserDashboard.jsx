@@ -13,7 +13,7 @@ export default function GitHubUserDashboard() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch('https://api.codolio.com/github/profile?userKey=shinkhal');
+        const response = await fetch('/api/fetchgithub');
         if (!response.ok) {
           throw new Error(`API error: ${response.status}`);
         }
