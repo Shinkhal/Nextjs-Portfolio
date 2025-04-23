@@ -51,7 +51,7 @@ function About() {
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-gray-100">
             Professional Experience
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {workDetails.map((work, index) => (
               <CardSpotlight key={index} className="h-auto min-h-96 w-full p-8 relative">
                 <div className="flex flex-col h-full relative z-20">

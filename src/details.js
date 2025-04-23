@@ -21,18 +21,26 @@ export const socialMediaUrl = {
 // Enter your Work Experience here
 export const workDetails = [
   {
+    logo: '/assets/placeholder.png',
+    Position: "Ai Trainer ",
+    Company: "Alignerr",
+    Location: "Remote",
+    Type: "Freelancing", 
+    Duration: "March 2025 - Present"
+  },
+  {
     logo: '/assets/outlier.png',
     Position: "Gen AI Coder",
     Company: "Outlier",
-    Location: "Work from home",
-    Type: "Internship",
+    Location: "Remote",
+    Type: "Freelancing",
     Duration: "October 2024 - Present"
   },
   {
     logo: '/assets/beasova.webp',
     Position: "Web Developer Intern",
     Company: "Beasova (AICTE)",
-    Location: "Work from home",
+    Location: "Remote",
     Type: "Internship",
     Duration: "August 2024 - September 2024"
   },
@@ -40,10 +48,10 @@ export const workDetails = [
     logo: '/assets/labdox.png',
     Position: "Graphic Designer",
     Company: "Labdox",
-    Location: "Work from home",
+    Location: "Remote",
     Type: "Internship",
     Duration: "May 2024 - June 2024"
-  }
+  },
   
 ];
 
@@ -117,12 +125,13 @@ export const skills = {
 
 
 export const certifications = [
-  { 
+  {
     id: 1, 
-    title: "Cloud Computing With AWS", 
+    title: "Cloud Computing", 
     link: "https://drive.google.com/file/d/10yiShlZmrhnIsrg-Lov3WYmOhWnCVLSG/view?usp=sharing",
-    issuer: "Amazon Web Services",
+    issuer: "NPTEL",
     issueDate: "2024",
+    pdfurl: "/assets/certificates/cloudnptel.pdf"
   },
   {
     id: 2, 
@@ -130,6 +139,7 @@ export const certifications = [
     link: "https://drive.google.com/file/d/1x0b2YghLX0xKmrTn3ogHmuSuu2N3zSVN/view?usp=sharing",
     issuer: "Oracle",
     issueDate: "2024",
+    pdfurl: "/assets/certificates/oracle.pdf"
   },
   { 
     id: 3, 
@@ -137,20 +147,31 @@ export const certifications = [
     link: "https://coursera.org/share/01084822bc72f8fd52723b8b0b818469",
     issuer: "Meta",
     issueDate: "2023",
+    pdfurl: "/assets/certificates/react.pdf"
   },
   { 
     id: 4, 
+    title: "Cloud Computing With AWS", 
+    link: "https://drive.google.com/file/d/10yiShlZmrhnIsrg-Lov3WYmOhWnCVLSG/view?usp=sharing",
+    issuer: "Amazon Web Services",
+    issueDate: "2024",
+    pdfurl: "/assets/certificates/cloud.pdf"
+  },
+  { 
+    id: 5, 
     title: "The Full Stack", 
     link: "https://coursera.org/share/d7747531acf11717b7a35132d4e9af86",
     issuer: "Meta",
     issueDate: "2023",
+    pdfurl: "/assets/certificates/fullstack.pdf"
   },
   { 
-    id: 5, 
+    id: 6, 
     title: "Server side JavaScript with Node.js",
     link: "https://coursera.org/share/eb652d49afd4a62c888e2948d539ba86",
     issuer: "Coursera",
     issueDate: "2024",
+    pdfurl: "/assets/certificates/nodejs.pdf"
   },
   { 
     id: 7,
@@ -158,6 +179,7 @@ export const certifications = [
     link: "https://coursera.org/share/2b141ebe967096edadf49b465324e171",
     issuer: "Coursera",
     issueDate: "2023",
+    pdfurl: "/assets/certificates/cpp.pdf",
   },
   { 
     id: 8, 
@@ -165,6 +187,7 @@ export const certifications = [
     link: "https://www.hackerrank.com/certificates/a6ff7f090c6e",
     issuer: "HackerRank",
     issueDate: "2022",
+    pdfurl : "/assets/certificates/python.pdf"
   },
   { 
     id: 9, 
@@ -172,6 +195,7 @@ export const certifications = [
     link: "https://coursera.org/share/3133e5feef011f808a1c5ed0ffe46555",
     issuer: "Coursera",
     issueDate: "2024",
+    pdfurl: "/assets/certificates/dp.pdf"
   },
   { 
     id: 10, 
@@ -179,6 +203,7 @@ export const certifications = [
     link: "https://coursera.org/share/790380c56167ca775372199ae5e265bd",
     issuer: "Coursera",
     issueDate: "2024",
+    pdfurl: "/assets/certificates/algorithms.pdf"
   },
   { 
     id: 11, 
@@ -186,6 +211,7 @@ export const certifications = [
     link: "https://coursera.org/share/3623ad857b20e3fa98a442285a4fecae",
     issuer: "DeepLearning.AI",
     issueDate: "2024",
+    pdfurl: "/assets/certificates/generativeai.pdf"
   },
   { 
     id: 12, 
@@ -193,6 +219,7 @@ export const certifications = [
     link: "https://coursera.org/share/b49db0f9515db30c879a1541658d7ae8",
     issuer: "DeepLearning.AI",
     issueDate: "2024",
+    pdfurl: "/assets/certificates/prompt.pdf"
   }
 ];
 

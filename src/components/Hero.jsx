@@ -28,7 +28,7 @@ function HeroSection() {
           Hey, I&apos;m
         </h3>
         <HyperText
-          className="bg-clip-text bg-orange-950 text-transparent font-bold"
+          className="bg-clip-text bg-sky-600 text-transparent font-bold"
           text="Shinkhal Sinha"
         />
         <h2 className="text-xl md:text-3xl lg:text-4xl text-white font-bold mt-4 font-montserrat">

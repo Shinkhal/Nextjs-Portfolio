@@ -104,6 +104,7 @@ export default function Skills() {
                     key={cert.id}
                     title={cert.title}
                     link={cert.link}
+                    pdfurl={cert.pdfurl}
                     issuer={cert.issuer}
                     date={cert.issueDate}
                   />
@@ -120,10 +121,11 @@ export default function Skills() {
   );
 }
 
-// Enhanced Certification Card Component
+// Enhanced Certification Card Component with PDF Display
 const CertificationCard = ({
   title,
   link,
+  pdfurl,
   issuer = "Certification Authority",
   date = "2023",
 }) => {
@@ -137,10 +139,30 @@ const CertificationCard = ({
       
       <div className="p-6 flex flex-col h-full">
         <div className="flex items-start gap-4 mb-4">
-          
-          
           <h3 className="text-lg font-semibold text-white flex-grow">{title}</h3>
         </div>
+        
+        {/* Certificate PDF Display */}
+        {pdfurl && (
+          <div className="mb-4 overflow-hidden rounded-md bg-gray-900/50 h-56">
+            <object
+              data={pdfurl}
+              type="application/pdf"
+              width="100%"
+              height="100%"
+              className="rounded-md"
+            >
+              <div className="flex items-center justify-center h-full">
+                <p className="text-center text-gray-400 p-4">
+                  PDF preview not available. 
+                  <a href={pdfurl} className="block mt-2 text-red-400 hover:underline">
+                    Download PDF
+                  </a>
+                </p>
+              </div>
+            </object>
+          </div>
+        )}
         
         <div className="space-y-3 mt-auto">
           <div className="flex items-center gap-2 text-gray-300">
@@ -159,7 +181,7 @@ const CertificationCard = ({
             rel="noopener noreferrer" 
             className="inline-flex items-center gap-2 mt-4 text-red-400 hover:text-red-300 transition-colors"
           >
-            <span>View Certificate</span>
+            <span>View Original Certificate</span>
             <ExternalLink size={16} />
           </a>
         </div>
