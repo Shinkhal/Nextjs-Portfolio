@@ -24,6 +24,7 @@ export default function Home() {
       try {
         const response = await fetch('/api/fetchprofile');
         const data = await response.json();
+        console.log(data.data);
         setProfileData(data.data);
         setLoading(false);
       } catch (error) {

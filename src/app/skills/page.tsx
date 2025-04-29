@@ -127,7 +127,6 @@ const CertificationCard = ({
   link,
   pdfurl,
   issuer = "Certification Authority",
-  date = "2023",
 }) => {
   return (
     <motion.div
@@ -151,6 +150,7 @@ const CertificationCard = ({
               width="100%"
               height="100%"
               className="rounded-md"
+              
             >
               <div className="flex items-center justify-center h-full">
                 <p className="text-center text-gray-400 p-4">
@@ -169,11 +169,7 @@ const CertificationCard = ({
             <Award size={16} className="text-red-400" />
             <span className="text-sm">{issuer}</span>
           </div>
-          
-          <div className="flex items-center gap-2 text-gray-300">
-            <Calendar size={16} className="text-red-400" />
-            <span className="text-sm">{date}</span>
-          </div>
+
           
           <a 
             href={link} 
