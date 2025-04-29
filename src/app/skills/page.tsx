@@ -7,7 +7,7 @@ import BlurFade from "@/components/magicui/blur-fade";
 import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground } from "@/components/ui/stars-background";
 import { motion } from "framer-motion";
-import { Award, Calendar, ExternalLink } from "lucide-react";
+import { Award, ExternalLink } from "lucide-react";
 
 export default function Skills() {
   const [selectedTab, setSelectedTab] = useState("skills");
@@ -106,7 +106,6 @@ export default function Skills() {
                     link={cert.link}
                     pdfurl={cert.pdfurl}
                     issuer={cert.issuer}
-                    date={cert.issueDate}
                   />
                 ))}
               </div>
