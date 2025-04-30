@@ -3,65 +3,57 @@ import Image from "next/image";
 import { personalDetails, workDetails, eduDetails } from "../details";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
 import BlurFade from "@/components/magicui/blur-fade";
-import { Building, GraduationCap, MapPin, Clock, Briefcase, Medal, BookOpen, Award, Trophy, Star, Code, Target } from 'lucide-react';
+import { Building, GraduationCap, MapPin, Clock, Briefcase, Medal, BookOpen, Trophy, Star, Code, HeartHandshake} from 'lucide-react';
 
 // Example achievements - you can move these to your details file later
 const achievements = [
   {
     id: 1,
-    title: "Hackathon Winner",
-    description: "First place in the National Tech Innovation Hackathon 2023, creating a solution for sustainable energy consumption tracking.",
+    title: "Smart India Hackathon Finalist",
+    description: "Ranked among the top 50 teams in college for Smart India Hackathon 2024 with the Farmease app aimed at connecting farmers to consumers and retailers.",
     icon: Trophy,
-    year: "2023",
+    year: "2024",
     color: "text-yellow-400",
     bgColor: "bg-yellow-400/10"
   },
   {
     id: 2,
     title: "Open Source Contributor",
-    description: "Active contributor to three major open-source projects with over 50 accepted pull requests, improving code quality and adding new features.",
+    description: "Contributed pull requests to 2–3 Apache GitHub repositories, actively supporting open-source development and collaboration.",
     icon: Code,
-    year: "2022",
+    year: "2024",
     color: "text-green-400",
     bgColor: "bg-green-400/10"
   },
   {
     id: 3,
-    title: "Research Publication",
-    description: "Co-authored a paper on 'AI Applications in Healthcare' published in the International Journal of Computer Science and Technology.",
-    icon: BookOpen,
-    year: "2022",
-    color: "text-purple-400",
-    bgColor: "bg-purple-400/10"
-  },
-  {
-    id: 4,
-    title: "Technical Speaker",
-    description: "Presented at three tech conferences on advanced web development techniques and emerging technologies.",
+    title: "Top Performer on HackerRank",
+    description: "Earned a 5-star badge in Problem Solving on HackerRank, demonstrating consistent DSA and algorithmic skills.",
     icon: Star,
-    year: "2021",
+    year: "2023",
     color: "text-blue-400",
     bgColor: "bg-blue-400/10"
   },
   {
-    id: 5,
-    title: "Project Leadership",
-    description: "Led a team of six developers to successfully deliver a critical enterprise project ahead of schedule with zero critical bugs.",
-    icon: Target,
-    year: "2020",
-    color: "text-red-400",
-    bgColor: "bg-red-400/10"
+    id: 4,
+    title: "Volunteering & Community Work",
+    description: "Organized blood donation camps in collaboration with NGOs to support healthcare efforts in underprivileged communities.",
+    icon: HeartHandshake,
+    year: "2023",
+    color: "text-pink-400",
+    bgColor: "bg-pink-400/10"
   },
   {
-    id: 6,
-    title: "Recognition Award",
-    description: "Received the 'Outstanding Technical Innovation' award at my previous workplace for developing an automation solution that reduced process time by 70%.",
-    icon: Award,
-    year: "2019",
-    color: "text-orange-400",
-    bgColor: "bg-orange-400/10"
+    id: 5,
+    title: "Super 30 Member",
+    description: "Selected as part of the prestigious Super 30 program, receiving focused training in engineering entrance preparation and problem-solving.",
+    icon: GraduationCap,
+    year: "2020",
+    color: "text-emerald-400",
+    bgColor: "bg-emerald-400/10"
   }
 ];
+ 
 
 function About() {
   return (
