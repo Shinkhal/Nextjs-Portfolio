@@ -1,5 +1,5 @@
-// components/RatingHistory.js
-import {  XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, Area, AreaChart } from 'recharts';
+import { XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, Area, AreaChart } from 'recharts';
+import { TrendingUp, } from 'lucide-react';
 
 export default function RatingHistory({ profileData, platform = 'all' }) {
   // Extract all platform profiles
@@ -145,10 +145,7 @@ export default function RatingHistory({ profileData, platform = 'all' }) {
   // Get data for all platforms or selected platform
   let chartData = [];
   let currentRating = 0;
-  let maxRating = 0;
-  let rank = 'N/A';
-  let lastContestDate = 'N/A';
-  let lastContestName = 'N/A';
+
   let activePlatform = platform;
   
   if (selectedProfile) {
@@ -156,10 +153,6 @@ export default function RatingHistory({ profileData, platform = 'all' }) {
     const platformData = getRatingData(selectedProfile, platform);
     chartData = platformData.chartData;
     currentRating = platformData.stats.currentRating;
-    maxRating = platformData.stats.maxRating;
-    rank = platformData.stats.rank;
-    lastContestDate = platformData.stats.lastContestDate;
-    lastContestName = platformData.stats.lastContestName;
   } else {
     // All platforms view or default to LeetCode if available
     const platformsToShow = [];
@@ -202,64 +195,100 @@ export default function RatingHistory({ profileData, platform = 'all' }) {
   // Get unique platforms in chart data
   const uniquePlatforms = [...new Set(chartData.map(item => item.platform))];
 
+  // Calculate rating change
+  const ratingChange = chartData.length > 1 ? currentRating - chartData[0].rating : 0;
+  const isPositive = ratingChange > 0;
+
   return (
-    <div className="bg-neutral-900 rounded-lg p-6 shadow-lg">
-      <div className="flex justify-between items-center mb-6">
-        <div>
-          <h2 className="text-lg font-semibold text-gray-300">Rating</h2>
-          <div className="text-3xl font-bold text-white">{currentRating}</div>
-          <div className="text-sm text-gray-400">Max: {maxRating}</div>
+    <div className="bg-neutral-900 backdrop-blur-sm rounded-2xl p-6 border border-gray-800/50">
+      {/* Compact Header */}
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-4">
+          <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-3 rounded-xl">
+            <TrendingUp size={24} className="text-white" />
+          </div>
+          <div>
+            <h2 className="text-xl font-bold text-white">Rating Progress</h2>
+            <p className="text-sm text-gray-400 capitalize">{activePlatform} Performance</p>
+          </div>
         </div>
+        
         <div className="text-right">
-          <h3 className="text-sm text-gray-400">{lastContestDate}</h3>
-          <p className="text-sm text-gray-300">{lastContestName}</p>
-          <p className="text-sm text-gray-400">Rank: {rank}</p>
+          <div className="text-3xl font-bold text-white mb-1">{currentRating}</div>
+          <div className="flex items-center gap-1 text-sm">
+            <span className="text-gray-400">Change:</span>
+            <span className={`font-semibold ${isPositive ? 'text-green-400' : 'text-red-400'}`}>
+              {isPositive ? '+' : ''}{ratingChange}
+            </span>
+          </div>
         </div>
       </div>
+
       
-      <div className="h-64">
-        <ResponsiveContainer width="100%" height="100%">
-          <AreaChart
-            data={chartData}
-            margin={{ top: 5, right: 5, left: 5, bottom: 5 }}
-          >
-            <defs>
+
+      {/* Chart */}
+      <div className="bg-gray-800/30 rounded-xl p-4">
+        <div className="h-48">
+          <ResponsiveContainer width="100%" height="100%">
+            <AreaChart
+              data={chartData}
+              margin={{ top: 10, right: 10, left: 10, bottom: 10 }}
+            >
+              <defs>
+                {uniquePlatforms.map(plt => (
+                  <linearGradient key={`gradient-${plt}`} id={`gradient-${plt}`} x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor={platformColors[plt]} stopOpacity={0.8}/>
+                    <stop offset="95%" stopColor={platformColors[plt]} stopOpacity={0.1}/>
+                  </linearGradient>
+                ))}
+              </defs>
+              <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.3} />
+              <XAxis 
+                dataKey="date" 
+                tick={{ fill: '#9CA3AF', fontSize: 12 }} 
+                tickLine={{ stroke: '#6B7280' }} 
+                axisLine={{ stroke: '#6B7280' }} 
+              />
+              <YAxis 
+                domain={['dataMin - 50', 'dataMax + 50']} 
+                tick={{ fill: '#9CA3AF', fontSize: 12 }} 
+                tickLine={{ stroke: '#6B7280' }} 
+                axisLine={{ stroke: '#6B7280' }} 
+              />
+              <Tooltip
+                contentStyle={{ 
+                  backgroundColor: '#1F2937', 
+                  border: 'none', 
+                  borderRadius: '12px',
+                  boxShadow: '0 10px 25px rgba(0,0,0,0.5)'
+                }}
+                labelStyle={{ color: '#F3F4F6' }}
+              />
+              {uniquePlatforms.length > 1 && (
+                <Legend 
+                  wrapperStyle={{ bottom: -5 }}
+                  formatter={(value) => <span style={{ color: '#D1D5DB' }}>{value}</span>}
+                />
+              )}
               {uniquePlatforms.map(plt => (
-                <linearGradient key={`gradient-${plt}`} id={`gradient-${plt}`} x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor={platformColors[plt]} stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor={platformColors[plt]} stopOpacity={0.2}/>
-                </linearGradient>
+                <Area 
+                  key={plt}
+                  type="monotone" 
+                  dataKey="rating" 
+                  data={chartData.filter(item => item.platform === plt)}
+                  name={plt.charAt(0).toUpperCase() + plt.slice(1)} 
+                  stroke={platformColors[plt] || '#6B7280'} 
+                  fill={`url(#gradient-${plt})`}
+                  activeDot={{ r: 6, fill: '#fff', stroke: platformColors[plt], strokeWidth: 2 }} 
+                  strokeWidth={2}
+                />
               ))}
-            </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke="#444" opacity={0.3} />
-            <XAxis dataKey="date" tick={{ fill: '#999' }} tickLine={{ stroke: '#666' }} axisLine={{ stroke: '#666' }} />
-            <YAxis domain={['dataMin - 50', 'dataMax + 50']} tick={{ fill: '#999' }} tickLine={{ stroke: '#666' }} axisLine={{ stroke: '#666' }} />
-            <Tooltip
-              contentStyle={{ backgroundColor: '#1e1e1e', border: 'none', borderRadius: '4px' }}
-              labelStyle={{ color: '#eee' }}
-            />
-            {uniquePlatforms.length > 1 && (
-              <Legend 
-                wrapperStyle={{ bottom: -10 }}
-                formatter={(value) => <span style={{ color: '#ccc' }}>{value}</span>}
-              />
-            )}
-            {uniquePlatforms.map(plt => (
-              <Area 
-                key={plt}
-                type="monotone" 
-                dataKey="rating" 
-                data={chartData.filter(item => item.platform === plt)}
-                name={plt.charAt(0).toUpperCase() + plt.slice(1)} 
-                stroke={platformColors[plt] || '#aaa'} 
-                fill={`url(#gradient-${plt})`}
-                activeDot={{ r: 8, fill: '#fff', stroke: platformColors[plt] }} 
-                strokeWidth={3}
-              />
-            ))}
-          </AreaChart>
-        </ResponsiveContainer>
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
       </div>
+
+      
     </div>
   );
 }

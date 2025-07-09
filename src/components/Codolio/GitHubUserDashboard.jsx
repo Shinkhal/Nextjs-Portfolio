@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Star, GitBranch, Github, Code, Calendar, Award, Activity } from 'lucide-react';
+import { Star, Github, Code, Calendar, Activity, TrendingUp } from 'lucide-react';
 import { GitHubCalendarComponent } from "@/components/Github";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -75,48 +75,33 @@ export default function GitHubUserDashboard() {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col lg:flex-row gap-6">
-          {/* Skeleton for Left Card */}
-          <div className="lg:w-1/3">
-            <div className="bg-neutral-900 rounded-xl shadow-lg p-6 border border-slate-800">
-              <div className="flex flex-col items-center text-center mb-6">
-                <Skeleton className="h-20 w-20 rounded-full mb-4" />
-                <Skeleton className="h-6 w-40 mb-2" />
-                <Skeleton className="h-4 w-24 mb-4" />
-                
-                <div className="w-full h-px bg-slate-800 my-4"></div>
-                
-                <div className="grid grid-cols-1 gap-4 w-full">
-                  {[1, 2, 3, 4, 5].map(i => (
-                    <div key={i} className="bg-slate-800/50 p-4 rounded-lg flex items-center">
-                      <Skeleton className="h-8 w-8 rounded-lg mr-4" />
-                      <div className="text-left w-full">
-                        <Skeleton className="h-3 w-24 mb-2" />
-                        <Skeleton className="h-5 w-12" />
-                      </div>
-                    </div>
-                  ))}
+      <div className="container mx-auto px-4 space-y-4">
+        {/* Header Skeleton */}
+        <div className="bg-neutral-900 backdrop-blur-sm rounded-2xl p-6 border border-gray-800/50">
+          <div className="flex items-center gap-4">
+            <Skeleton className="h-16 w-16 rounded-2xl" />
+            <div className="flex-1">
+              <Skeleton className="h-6 w-48 mb-2" />
+              <Skeleton className="h-4 w-32" />
+            </div>
+            <div className="flex gap-4">
+              {[1, 2, 3, 4].map(i => (
+                <div key={i} className="text-center">
+                  <Skeleton className="h-8 w-16 mb-1" />
+                  <Skeleton className="h-3 w-12" />
                 </div>
-              </div>
+              ))}
             </div>
           </div>
-          
-          {/* Skeleton for Center Card */}
-          <div className="lg:w-2/3">
-            <div className="bg-neutral-900 rounded-xl shadow-lg p-6 border border-slate-800 mb-6">
-              <Skeleton className="h-8 w-60 mb-6" />
-              <Skeleton className="h-40 w-full mb-6 rounded-lg" />
-              
-              <Skeleton className="h-8 w-48 mb-4" />
-              <Skeleton className="h-8 w-full mb-6 rounded-lg" />
-              
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {[1, 2, 3, 4, 5, 6, 7, 8].map(i => (
-                  <Skeleton key={i} className="h-16 rounded-lg" />
-                ))}
-              </div>
-            </div>
+        </div>
+        
+        {/* Content Skeleton */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="lg:col-span-2">
+            <Skeleton className="h-80 rounded-2xl" />
+          </div>
+          <div>
+            <Skeleton className="h-80 rounded-2xl" />
           </div>
         </div>
       </div>
@@ -124,8 +109,8 @@ export default function GitHubUserDashboard() {
   }
 
   if (error) return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="bg-red-900 border border-red-700 p-4 rounded-md text-red-100">
+    <div className="container mx-auto px-4">
+      <div className="bg-red-900/20 border border-red-700/50 p-4 rounded-2xl text-red-100">
         <h2 className="font-bold">Error loading data</h2>
         <p>{error}</p>
       </div>
@@ -134,120 +119,100 @@ export default function GitHubUserDashboard() {
 
   if (!userData) return null;
 
+  const stats = [
+    { icon: Star, label: 'Stars', value: userData.stars, color: 'text-yellow-400', bg: 'bg-yellow-400/10' },
+    { icon: Code, label: 'Commits', value: formatNumber(userData.commitCounts), color: 'text-blue-400', bg: 'bg-blue-400/10' },
+    { icon: Activity, label: 'Contributions', value: formatNumber(userData.totalContributions), color: 'text-green-400', bg: 'bg-green-400/10' },
+    { icon: Calendar, label: 'Active Days', value: userData.totalActiveDays, color: 'text-purple-400', bg: 'bg-purple-400/10' }
+  ];
+
   return (
-    <div className="container mx-auto px-4 py-8 text-slate-200">
-      <div className="flex flex-col lg:flex-row gap-6">
-        {/* Left Card - Profile Information */}
-        <div className="lg:w-1/3">
-          <div className="bg-neutral-900 rounded-xl shadow-lg p-6 border border-slate-800 sticky top-6">
-            <div className="flex flex-col items-center text-center">
-              <div className="bg-gradient-to-br from-indigo-600 to-purple-700 p-5 rounded-full mb-4">
-                <Github size={48} className="text-white" />
+    <div className="container mx-auto px-4 py-8 space-y-6">
+      {/* Compact Header */}
+      <div className="bg-neutral-900 backdrop-blur-sm rounded-2xl p-6 border border-gray-800/50">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center gap-6">
+          <div className="flex items-center gap-4">
+            <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-4 rounded-2xl">
+              <Github size={32} className="text-white" />
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold text-white">{userData.githubProfile}</h1>
+              <p className="text-gray-400 text-sm">User #{userData.userId}</p>
+            </div>
+          </div>
+          
+          <div className="flex-1 grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+            {stats.map((stat, i) => (
+              <div key={i} className="text-center lg:text-left">
+                <div className="flex items-center justify-center lg:justify-start gap-2 mb-1">
+                  <div className={`p-1.5 rounded-lg ${stat.bg}`}>
+                    <stat.icon size={16} className={stat.color} />
+                  </div>
+                  <span className="text-xs text-gray-400 hidden lg:block">{stat.label}</span>
+                </div>
+                <div className="font-bold text-lg text-white">{stat.value}</div>
+                <div className="text-xs text-gray-400 lg:hidden">{stat.label}</div>
               </div>
-              <h1 className="text-2xl font-bold text-white mb-1">{userData.githubProfile}</h1>
-              <p className="text-slate-400 text-sm">User #{userData.userId}</p>
-              
-              <div className="w-full h-px bg-slate-800 my-4"></div>
-              
-              <div className="grid grid-cols-1 gap-4 w-full">
-                <div className="bg-slate-800/50 p-4 rounded-lg flex items-center">
-                  <div className="bg-yellow-500/20 p-2 rounded-lg mr-4">
-                    <Star size={18} className="text-yellow-400" />
-                  </div>
-                  <div className="text-left">
-                    <p className="text-xs text-slate-400">Total Stars</p>
-                    <p className="font-semibold">{userData.stars}</p>
-                  </div>
-                </div>
-                
-                <div className="bg-slate-800/50 p-4 rounded-lg flex items-center">
-                  <div className="bg-blue-500/20 p-2 rounded-lg mr-4">
-                    <GitBranch size={18} className="text-blue-400" />
-                  </div>
-                  <div className="text-left">
-                    <p className="text-xs text-slate-400">Issues Created</p>
-                    <p className="font-semibold">{userData.issues}</p>
-                  </div>
-                </div>
-                
-                <div className="bg-slate-800/50 p-4 rounded-lg flex items-center">
-                  <div className="bg-purple-500/20 p-2 rounded-lg mr-4">
-                    <Code size={18} className="text-purple-400" />
-                  </div>
-                  <div className="text-left">
-                    <p className="text-xs text-slate-400">Total Commits</p>
-                    <p className="font-semibold">{formatNumber(userData.commitCounts)}</p>
-                  </div>
-                </div>
-                
-                <div className="bg-slate-800/50 p-4 rounded-lg flex items-center">
-                  <div className="bg-green-500/20 p-2 rounded-lg mr-4">
-                    <Activity size={18} className="text-green-400" />
-                  </div>
-                  <div className="text-left">
-                    <p className="text-xs text-slate-400">Contributions</p>
-                    <p className="font-semibold">{formatNumber(userData.totalContributions)}</p>
-                  </div>
-                </div>
-                
-                <div className="bg-slate-800/50 p-4 rounded-lg flex items-center">
-                  <div className="bg-emerald-500/20 p-2 rounded-lg mr-4">
-                    <Calendar size={18} className="text-emerald-400" />
-                  </div>
-                  <div className="text-left">
-                    <p className="text-xs text-slate-400">Active Days</p>
-                    <p className="font-semibold">{userData.totalActiveDays}</p>
-                  </div>
-                </div>
-              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Activity Calendar - Takes 2 columns on large screens */}
+        <div className="lg:col-span-2">
+          <div className="bg-neutral-900 backdrop-blur-sm rounded-2xl p-6 border border-gray-800/50">
+            <div className="flex items-center gap-2 mb-4">
+              <TrendingUp size={20} className="text-indigo-400" />
+              <h2 className="text-lg font-semibold text-white">Activity Overview</h2>
+            </div>
+            
+            <div className="bg-neutral-900 rounded-xl p-4">
+              <GitHubCalendarComponent username="Shinkhal" />
             </div>
           </div>
         </div>
-        
-        {/* Center Card - Dashboard Content */}
-        <div className="lg:w-2/3">
-          <div className="bg-neutral-900 rounded-xl shadow-lg p-6 border border-slate-800 mb-6">
-            <h2 className="text-xl font-bold text-white mb-4 flex items-center">
-              <Award size={20} className="text-indigo-400 mr-2" />
-              GitHub Activity Overview
-            </h2>
+
+        {/* Language Distribution - Takes 1 column */}
+        <div className="lg:col-span-1">
+          <div className="bg-neutral-900 backdrop-blur-sm rounded-2xl p-6 border border-gray-800/50">
+            <div className="flex items-center gap-2 mb-4">
+              <Code size={20} className="text-emerald-400" />
+              <h2 className="text-lg font-semibold text-white">Languages</h2>
+            </div>
             
-              <GitHubCalendarComponent username="Shinkhal" />
+            {/* Language Progress Bar */}
+            <div className="h-3 w-full flex rounded-full overflow-hidden mb-4 bg-gray-800">
+              {languageData.slice(0, 5).map((lang, i) => (
+                <div 
+                  key={i}
+                  style={{ 
+                    width: `${lang.percentage}%`, 
+                    backgroundColor: lang.color 
+                  }}
+                  className="h-full transition-all duration-300 hover:opacity-80"
+                  title={`${lang.name}: ${lang.percentage.toFixed(1)}%`}
+                />
+              ))}
+            </div>
             
-            
-            <div className="bg-slate-800/50 rounded-lg p-4 mt-6">
-              <h3 className="text-lg font-semibold text-slate-300 mb-4">Language Distribution</h3>
-              
-              <div className="h-8 w-full flex rounded-lg overflow-hidden mb-4">
-                {languageData.map((lang, i) => (
-                  <div 
-                    key={i}
-                    style={{ 
-                      width: `${lang.percentage}%`, 
-                      backgroundColor: lang.color 
-                    }}
-                    className="h-full transition-all duration-300 hover:opacity-80"
-                    title={`${lang.name}: ${lang.percentage.toFixed(1)}%`}
-                  />
-                ))}
-              </div>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-6">
-                {languageData.slice(0, 8).map((lang, i) => (
-                  <div key={i} className="flex items-center gap-2 bg-neutral-800 p-3 rounded-lg">
+            {/* Language List */}
+            <div className="space-y-2">
+              {languageData.slice(0, 6).map((lang, i) => (
+                <div key={i} className="flex items-center justify-between p-2 bg-gray-800/40 rounded-lg">
+                  <div className="flex items-center gap-3">
                     <div 
-                      className="w-4 h-4 rounded-full flex-shrink-0" 
+                      className="w-3 h-3 rounded-full flex-shrink-0" 
                       style={{ backgroundColor: lang.color }}
                     />
-                    <div className="min-w-0 flex-1">
-                      <span className="text-sm font-medium block truncate">{lang.name}</span>
-                      <span className="text-xs text-slate-400 block">
-                        {lang.percentage.toFixed(1)}%
-                      </span>
-                    </div>
+                    <span className="text-sm font-medium text-gray-200">{lang.name}</span>
                   </div>
-                ))}
-              </div>
+                  <span className="text-xs text-gray-400">
+                    {lang.percentage.toFixed(1)}%
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
