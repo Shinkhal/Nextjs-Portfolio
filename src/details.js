@@ -1,3 +1,4 @@
+import { Trophy, Code, Star, HeartHandshake, GraduationCap } from 'lucide-react';
 
 // Enter your Personal Details here
 export const personalDetails = {
@@ -20,6 +21,13 @@ export const socialMediaUrl = {
 
 // Enter your Work Experience here
 export const workDetails = [
+  {
+    Position: "React Developer Intern",
+    Company: "Celebal Technologies",
+    Location: "Remote",
+    Type: "Internship",
+    Duration: "May 2025 - July 2025",
+  },
   {
     logo: '/assets/placeholder.png',
     Position: "Ai Trainer ",
@@ -226,94 +234,109 @@ export const certifications = [
 // Enter your Project Details here
 export const projectDetails = [
   {
-    title: "Job Autofill",
-    image: "/assets/projects/project14.png", 
-    description: `A modern web application that simplifies the job application process. Users can update their profile once, and the platform auto-fills job applications, generates LaTeX resumes with multiple templates, and includes a light/dark mode toggle.`,
+    title: "CRM Campaign Manager",
+    image: "/assets/projects/project17.png",
+    description: `A mini CRM platform with visual rule builder for automated email campaigns and AI-generated performance tips using Gemini API. Includes campaign creation, user segmentation, and growth insights.`,
+    techstack: "React.js, Node.js, MongoDB, SMTP, Google Gemini API",
+    previewLink: "",
+    githubLink: "https://github.com/Shinkhal/Mini-CRM",
+  },
+  {
+    title: "Shipment Delivery Application",
+    image: "/assets/projects/project18.png",
+    description: `A full-stack logistics and shipment tracking platform with React frontend, secure backend, shipment status tracking, PDF invoice generation, and Razorpay payment integration. Users can download or mail shipment receipts.`,
+    techstack: "React.js, Node.js, MongoDB, Razorpay, Brevo SMTP",
+    previewLink: "",
+    githubLink: "https://github.com/Shinkhal/Shipment-Delivery-App",
+  },
+  {
+    title: "XKCD Comic Subscription",
+    image: "/assets/projects/project19.png",
+    description: `A PHP-based daily comic subscription app that emails random XKCD comics using CRON jobs. Features include email verification and an unsubscribe mechanism.`,
+    techstack: "PHP, MySQL, CRON Jobs, PHPMailer",
+    previewLink: "",
+    githubLink: "https://github.com/Shinkhal/xkcd-subscription",
+  },
+  {
+    title: "Business Utility Tool",
+    image: "/assets/projects/project16.png",
+    description: `A Laravel-based solution for small businesses to manage customers, inventory, and invoices. Features invoice generation, mailing, printing, and download capabilities.`,
+    techstack: "Laravel, MySQL, Blade, Bootstrap, SMTP",
+    previewLink: "",
+    githubLink: "https://github.com/Shinkhal/Business-Utility-Tool",
+  },
+  {
+    title: "Job Autofill (Ongoing)",
+    image: "/assets/projects/project14.png",
+    description: `An advanced job application platform that auto-fills forms using profile data, generates LaTeX resumes with ATS feedback from OpenAI, and supports dark/light mode toggle.`,
     techstack: "Next.js, TypeScript, Tailwind CSS, shadcn/ui, Firebase, MongoDB, OpenAI API",
-    previewLink: "https://autofill-job.vercel.app/", 
+    previewLink: "https://autofill-job.vercel.app/",
     githubLink: "https://github.com/Shinkhal/autofill",
-  },  
+  },
   {
     title: "Cancer Prediction",
-    image: "/assets/projects/project13.png", 
-    description: `A web-based cancer prediction platform focused on thyroid cancer. It features ML-based diagnosis using user input, real-time news updates, a Tableau dashboard, and an AI-powered chatbot for information. Users can also leave testimonials and subscribe to newsletters.`,
-    techstack: "React+Vite, Tailwind CSS, shadcn/ui, Python, Scikit-learn, Firebase, Tableau, NewsAPI",
+    image: "/assets/projects/project13.png",
+    description: `Thyroid cancer prediction web app using ML models. Includes a chatbot, news updates, Tableau dashboard, and newsletter subscription.`,
+    techstack: "React+Vite, Tailwind CSS, Python, Scikit-learn, Firebase, Tableau, NewsAPI",
     previewLink: "https://thyroidcancer.vercel.app/",
     githubLink: "https://github.com/Shinkhal/Cancer-Prediction",
-  },   
+  },
   {
     title: "MovieQuest",
-    image: '/assets/projects/project8.png',
-    description: `A movie recommendation platform where the users can see trending and latest movies , search for their fav movie and stream it or Pick a movie from different genres to watch`,
-    techstack: "Nextjs, Tailwind CSS, Typescript",
+    image: "/assets/projects/project8.png",
+    description: `A movie discovery platform that allows users to browse by genre, search, view trending titles, and explore individual movie details.`,
+    techstack: "Next.js, Tailwind CSS, TypeScript",
     previewLink: "https://movies-quest.vercel.app/",
     githubLink: "https://github.com/Shinkhal/Movie-Quest",
   },
   {
     title: "Next.js Portfolio",
-    image: '/assets/projects/project9.png',
-    description: `A personal portfolio website built with Next.js and Tailwind CSS, showcasing dynamic content and optimized for SEO and performance.`,
+    image: "/assets/projects/project9.png",
+    description: `My personal portfolio showcasing projects and skills, built for SEO and performance using static optimization.`,
     techstack: "Next.js, Tailwind CSS",
     previewLink: "https://nextjs-portfolio.vercel.app/",
     githubLink: "https://github.com/Shinkhal/Nextjs-Portfolio",
   },
   {
     title: "QuickEats",
-    image: "/assets/projects/project15.png", // Replace with the actual image path
-    description: `A full-featured MERN stack food ordering platform where users can browse food items, place orders with integrated payments, and receive real-time updates via email. It also includes a powerful admin dashboard for order management, lead tracking, CRM insights, inventory control, and email-based communication with users using an SMTP server.`,
+    image: "/assets/projects/project15.png",
+    description: `A full-stack food delivery platform with real-time updates, integrated payments, and CRM features like order management and email automation.`,
     techstack: "MERN, JWT, SMTP, Payment Gateway",
     githubLink: "https://github.com/Shinkhal/QuickEats",
-  },  
+  },
   {
     title: "Farmease App",
-    image: '/assets/projects/project10.png',
-    description: `A mobile application connecting farmers directly with consumers and retailers. The app includes AI/ML features to enhance user experience and optimize operations.`,
+    image: "/assets/projects/project10.png",
+    description: `Smart India Hackathon finalist app connecting farmers to consumers and retailers. Features location-based ordering and AI/ML enhancements.`,
     techstack: "React Native, Node.js, MongoDB, JWT",
     previewLink: "https://farmease-app.com/",
     githubLink: "https://github.com/Shinkhal/Farmease",
   },
   {
     title: "Weather Dashboard",
-    image: "/assets/projects/project14.png", // Replace with the actual image path
-    description: `A modern weather dashboard built with Next.js, ShadCN, and Tailwind CSS. The app provides real-time current weather and 5-day forecasts using the OpenWeatherMap API. Features include dark/light mode toggle, recent search history (last 5 searches), and a responsive, modern UI.`,
-    techstack: "Next.js, Tailwind CSS, ShadCN/UI, OpenWeatherMap API, next-themes, localStorage",
+    image: "/assets/projects/project14.png",
+    description: `Real-time weather app with 5-day forecast, recent search history, dark/light mode, and responsive UI.`,
+    techstack: "Next.js, Tailwind CSS, ShadCN, OpenWeatherMap API",
     previewLink: "https://weather-dashboard-navy-tau.vercel.app/",
     githubLink: "https://github.com/Shinkhal/Weather-Dashboard",
-  },  
+  },
   {
-    title: "GeeksForGeeks Api",
-    image: '/assets/projects/project7.png',
-    description: `This API allows you to retrieve user statistics from GeeksforGeeks. Simply append a GeeksforGeeks username to the URL to get detailed stats for that user.`,
+    title: "GeeksForGeeks API",
+    image: "/assets/projects/project7.png",
+    description: `Node.js-based API to fetch GeeksforGeeks user stats using Puppeteer.`,
     techstack: "Node.js, Express.js, Puppeteer",
     previewLink: "https://gfg-api-bjiu.onrender.com",
     githubLink: "https://github.com/Shinkhal/gfg_api",
   },
   {
     title: "Cakes N Shapes",
-    image: '/assets/projects/project11.png',  
-    description: `Developed a bakery website that allows users to log in, book a table to dine-in, browse the menu, check prices, and view bakery details.`,
+    image: "/assets/projects/project11.png",
+    description: `Bakery website with table booking, menu, pricing, and bakery details.`,
     techstack: "Vite+React, Node.js, MongoDB, JWT",
-    previewLink: "https://dwija-bake-studio.store/", // Provide the preview link
+    previewLink: "https://dwija-bake-studio.store/",
     githubLink: "https://github.com/Shinkhal/Cakes-N-Shape",
   },
-  {
-    title: "KeyDrive (Car Rental Website)",
-    image: '/assets/projects/project12.png',  // Replace with actual image path
-    description: `A car rental website built with PHP, allowing users to browse available cars, make reservations, and manage bookings.`,
-    techstack: "PHP, MySQL, HTML, CSS",
-    previewLink: "", // Provide the preview link
-    githubLink: "https://github.com/Shinkhal/Car-rental",
-  },
-  {
-    title: "Restaurant Table Booking",
-    image: '/assets/projects/project2.png',
-    description: `Created a streamlined Restaurant Table Booking Website for convenient reservation management and other services of the restaurant with proper validation and authentication.`,
-    techstack: "MERN Stack",
-    previewLink: "https://cusine.feista-flavours.infinityfreeapp.com",
-    githubLink: "https://github.com/Shinkhal/Feista-Flavours",
-  },
-
-  {
+    {
     title: "Portfolio",
     image: '/assets/projects/project1.png',
     description: `Discover my portfolio—an interactive showcase of projects, skills, and contact information. Explore live project previews and GitHub repositories to see my work in action.`,
@@ -321,48 +344,59 @@ export const projectDetails = [
     previewLink: "https://apurwasharma.site/",
     githubLink: "https://github.com/Web-Dev-Protfolio",
   },
-  
   {
-    title: "Restaurant Frontend",
-    image: '/assets/projects/project3.png',
-    description: `Project for Meta Capstone where Developed an intuitive Frontend website for seamless online meal selection and food delivery.`,
+    title: "KeyDrive (Car Rental)",
+    image: "/assets/projects/project12.png",
+    description: `Car rental web app with reservation and booking management.`,
+    techstack: "PHP, MySQL, HTML, CSS",
+    githubLink: "https://github.com/Shinkhal/Car-rental",
+  },
+  {
+    title: "Restaurant Table Booking",
+    image: "/assets/projects/project2.png",
+    description: `Dining reservation app with auth and validation.`,
+    techstack: "MERN Stack",
+    previewLink: "https://cusine.feista-flavours.infinityfreeapp.com",
+    githubLink: "https://github.com/Shinkhal/Feista-Flavours",
+  },
+  {
+    title: "Restaurant Frontend (Meta Capstone)",
+    image: "/assets/projects/project3.png",
+    description: `Frontend-only food ordering interface for Meta Capstone project.`,
     techstack: "React.js",
     githubLink: "https://github.com/Shinkhal/shinkhal.github.io/tree/main",
-    previewLink: "", // Provide a placeholder if there's no preview link
   },
   {
     title: "Global Craft Hub",
     image: "/assets/projects/project0.png",
-    description: `A responsive e-commerce platform showcasing unique crafts from around the world. Features include a homepage with featured crafts, an about page detailing the mission and values, a shop page to browse and explore available crafts, a cart page to manage items, a login page for personalized access, and a contact page for inquiries.`,
+    description: `Static e-commerce platform to showcase handmade crafts with homepage, cart, shop, and contact.`,
     techstack: "HTML, CSS, JavaScript",
-    previewLink: "https://global-craft-hub.netlify.app/", // Replace with actual deployment link if available
+    previewLink: "https://global-craft-hub.netlify.app/",
     githubLink: "https://github.com/Shinkhal/global-craft-hub",
-  },  
-  {
-    title: "UMS Website",
-    image: '/assets/projects/project4.png',
-    description: `Crafted a user-friendly University Management System website. A comprehensive university student portal to view teacher messages, academic updates, timetable, fees, assignments, attendance, and more.`,
-    techstack: "HTML/CSS, JavaScript",
-    githubLink: "https://github.com/Shinkhal/UMS",
-    previewLink: "", 
   },
   {
-    title: "Logos And Posters",
-    image: '/assets/projects/project5.png',
-    description: `Designed logos and posters using Adobe Photoshop, Canva, Illustrator, InDesign, and Lightroom.`,
-    techstack: "Adobe Photoshop, Canva, Illustrator, InDesign, Lightroom",
+    title: "UMS Website",
+    image: "/assets/projects/project4.png",
+    description: `University management portal for students to access academic and campus info.`,
+    techstack: "HTML, CSS, JavaScript",
+    githubLink: "https://github.com/Shinkhal/UMS",
+  },
+  {
+    title: "Logos and Posters",
+    image: "/assets/projects/project5.png",
+    description: `Graphic design portfolio with logos, posters, and branding made in Photoshop, Illustrator, Canva.`,
+    techstack: "Photoshop, Illustrator, InDesign, Canva, Lightroom",
     previewLink: "https://drive.google.com/drive/folders/1jdHNNNcYe-zQWCYMmqPooEKV4GwiPJ3f?usp=sharing",
-    githubLink: "", // Provide a placeholder if there's no GitHub link
   },
   {
     title: "MCU Illustrations",
-    image: '/assets/projects/project6.png',
-    description: `Created some illustration designs based on the characters of the Marvel Cinematic Universe (MCU).`,
-    techstack: "Adobe Photoshop, Illustrator",
+    image: "/assets/projects/project6.png",
+    description: `Digital illustrations based on Marvel Cinematic Universe characters.`,
+    techstack: "Photoshop, Illustrator",
     previewLink: "https://drive.google.com/drive/folders/1jdHNNNcYe-zQWCYMmqPooEKV4GwiPJ3f?usp=sharing",
-    githubLink: "", // Provide a placeholder if there's no GitHub link
-  }
+  },
 ];
+
 
 
 export const profileLinks = [
@@ -406,4 +440,52 @@ export const profileLinks = [
     url: 'https://stackoverflow.com/users/20679674/shinkhal-sinha',
     icon: 'FaStackOverflow',
   },
+];
+
+export const achievements = [
+  {
+    id: 1,
+    title: "Smart India Hackathon Finalist",
+    description: "Ranked among the top 50 teams in college for Smart India Hackathon 2024 with the Farmease app aimed at connecting farmers to consumers and retailers.",
+    icon: Trophy,
+    year: "2024",
+    color: "text-yellow-400",
+    bgColor: "bg-yellow-400/10"
+  },
+  {
+    id: 2,
+    title: "Open Source Contributor",
+    description: "Contributed pull requests to 2–3 Apache GitHub repositories, actively supporting open-source development and collaboration.",
+    icon: Code,
+    year: "2024",
+    color: "text-green-400",
+    bgColor: "bg-green-400/10"
+  },
+  {
+    id: 3,
+    title: "Top Performer on HackerRank",
+    description: "Earned a 5-star badge in Problem Solving on HackerRank, demonstrating consistent DSA and algorithmic skills.",
+    icon: Star,
+    year: "2023",
+    color: "text-blue-400",
+    bgColor: "bg-blue-400/10"
+  },
+  {
+    id: 4,
+    title: "Volunteering & Community Work",
+    description: "Organized blood donation camps in collaboration with NGOs to support healthcare efforts in underprivileged communities.",
+    icon: HeartHandshake,
+    year: "2023",
+    color: "text-pink-400",
+    bgColor: "bg-pink-400/10"
+  },
+  {
+    id: 5,
+    title: "Super 30 Member",
+    description: "Selected as part of the prestigious Super 30 program, receiving focused training in engineering entrance preparation and problem-solving.",
+    icon: GraduationCap,
+    year: "2020",
+    color: "text-emerald-400",
+    bgColor: "bg-emerald-400/10"
+  }
 ];
