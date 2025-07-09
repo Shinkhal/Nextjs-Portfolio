@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Shinkhal's Portfolio Website
 
-## Getting Started
+A modern, fully responsive personal portfolio built with **Next.js** and **Tailwind CSS**. It showcases projects, skills, achievements, and includes SEO optimization and dark/light theme toggle.
 
-First, run the development server:
+## 🌐 Live Preview
+
+🔗 [Visit Portfolio Website](https://nextjs-portfolio-shinkhal-sinhas-projects.vercel.app/)
+
+---
+
+## 📸 Features
+
+- ⚡ **Built with Next.js** for performance and scalability
+- 🎨 **Tailwind CSS** for rapid UI development
+- 🌙 **Dark/Light mode** toggle using `next-themes`
+- 💼 **Dynamic Projects Section** from a single JS config
+- 🧠 **Achievements Section** with icons and color tags
+- 🧾 **Skills, Education & Contact** info included
+- 🪄 **Smooth animations** using `framer-motion`
+- ✅ SEO-friendly with optimized meta tags and structure
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 14+
+- **Styling:** Tailwind CSS
+- **Icons:** Lucide-react, Tabler Icons
+- **Components:** shadcn/ui
+- **Animation:** Framer Motion
+- **Theme Management:** next-themes
+
+
+
+---
+
+## 🧠 Setup & Run Locally
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Shinkhal/Nextjs-Portfolio.git
+cd Nextjs-Portfolio
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Run Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The site will be live at `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📦 Build for Production
 
-## Learn More
+```bash
+npm run build
+npm run start
+```
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📬 Contact
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Feel free to connect with me:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* 🌐 [Website](https://shinkhal-sinha.online)
+* 📧 [Email](mailto:shinkhalsinha@gmail.com)
+* 💼 [LinkedIn](https://www.linkedin.com/in/shinkhal-sinha)
+* 🧑‍💻 [GitHub](https://github.com/Shinkhal)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📄 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 🙌 Acknowledgements
+
+* [Next.js Docs](https://nextjs.org/docs)
+* [Tailwind CSS Docs](https://tailwindcss.com/docs)
+* [shadcn/ui](https://ui.shadcn.com/)
+* [Framer Motion](https://www.framer.com/motion/)
+
