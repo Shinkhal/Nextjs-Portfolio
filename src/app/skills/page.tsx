@@ -7,7 +7,7 @@ import BlurFade from "@/components/magicui/blur-fade";
 import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground } from "@/components/ui/stars-background";
 import { motion } from "framer-motion";
-import { Award, ExternalLink } from "lucide-react";
+import { Award, ExternalLink, FileText } from "lucide-react";
 
 export default function Skills() {
   const [selectedTab, setSelectedTab] = useState("skills");
@@ -120,7 +120,7 @@ export default function Skills() {
   );
 }
 
-// Enhanced Certification Card Component with PDF Display
+// Minimalist Certification Card Component
 const CertificationCard = ({
   title,
   link,
@@ -129,56 +129,54 @@ const CertificationCard = ({
 }) => {
   return (
     <motion.div
-      whileHover={{ y: -8, scale: 1.02 }}
+      whileHover={{ y: -4, scale: 1.01 }}
       transition={{ duration: 0.3 }}
-      className="relative overflow-hidden rounded-xl backdrop-blur-sm bg-gray-800/30 border border-gray-700/50 hover:border-red-400/50 shadow-lg transition-all duration-300"
+      className="group relative overflow-hidden rounded-lg backdrop-blur-sm bg-gray-900/40 border border-gray-700/30 hover:border-red-400/40 shadow-md hover:shadow-lg transition-all duration-300"
     >
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-red-300"></div>
+      {/* Subtle top accent */}
+      <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-red-500/60 to-red-300/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       
-      <div className="p-6 flex flex-col h-full">
+      <div className="p-6">
+        {/* Certificate Icon */}
         <div className="flex items-start gap-4 mb-4">
-          <h3 className="text-lg font-semibold text-white flex-grow">{title}</h3>
+          <div className="bg-red-500/10 p-2 rounded-lg">
+            <Award size={20} className="text-red-400" />
+          </div>
+          <div className="flex-grow">
+            <h3 className="text-lg font-semibold text-white group-hover:text-red-100 transition-colors duration-300 leading-tight">
+              {title}
+            </h3>
+          </div>
         </div>
         
-        {/* Certificate PDF Display */}
-        {pdfurl && (
-          <div className="mb-4 overflow-hidden rounded-md bg-gray-900/50 h-56">
-            <object
-              data={pdfurl}
-              type="application/pdf"
-              width="100%"
-              height="100%"
-              className="rounded-md"
-              
-            >
-              <div className="flex items-center justify-center h-full">
-                <p className="text-center text-gray-400 p-4">
-                  PDF preview not available. 
-                  <a href={pdfurl} className="block mt-2 text-red-400 hover:underline">
-                    Download PDF
-                  </a>
-                </p>
-              </div>
-            </object>
-          </div>
-        )}
+        {/* Issuer */}
+        <div className="mb-6">
+          <p className="text-sm text-gray-400 font-medium">{issuer}</p>
+        </div>
         
-        <div className="space-y-3 mt-auto">
-          <div className="flex items-center gap-2 text-gray-300">
-            <Award size={16} className="text-red-400" />
-            <span className="text-sm">{issuer}</span>
-          </div>
-
-          
+        {/* Actions */}
+        <div className="flex flex-col gap-3">
           <a 
             href={link} 
             target="_blank"
             rel="noopener noreferrer" 
-            className="inline-flex items-center gap-2 mt-4 text-red-400 hover:text-red-300 transition-colors"
+            className="inline-flex items-center gap-2 text-red-400 hover:text-red-300 transition-colors group/link"
           >
-            <span>View Original Certificate</span>
-            <ExternalLink size={16} />
+            <ExternalLink size={14} className="group-hover/link:translate-x-0.5 transition-transform" />
+            <span className="text-sm font-medium">View Certificate</span>
           </a>
+          
+          {pdfurl && (
+            <a 
+              href={pdfurl} 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-gray-400 hover:text-gray-300 transition-colors group/pdf"
+            >
+              <FileText size={14} className="group-hover/pdf:translate-x-0.5 transition-transform" />
+              <span className="text-sm">Download PDF</span>
+            </a>
+          )}
         </div>
       </div>
     </motion.div>

@@ -1,58 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import { personalDetails, workDetails, eduDetails } from "../details";
+import { personalDetails, workDetails, eduDetails, achievements } from "../details";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
 import BlurFade from "@/components/magicui/blur-fade";
-import { Building, GraduationCap, MapPin, Clock, Briefcase, Medal, BookOpen, Trophy, Star, Code, HeartHandshake} from 'lucide-react';
+import { Building, GraduationCap, MapPin, Clock, Medal, BookOpen, Calendar, User} from 'lucide-react';
 
-// Example achievements - you can move these to your details file later
-const achievements = [
-  {
-    id: 1,
-    title: "Smart India Hackathon Finalist",
-    description: "Ranked among the top 50 teams in college for Smart India Hackathon 2024 with the Farmease app aimed at connecting farmers to consumers and retailers.",
-    icon: Trophy,
-    year: "2024",
-    color: "text-yellow-400",
-    bgColor: "bg-yellow-400/10"
-  },
-  {
-    id: 2,
-    title: "Open Source Contributor",
-    description: "Contributed pull requests to 2–3 Apache GitHub repositories, actively supporting open-source development and collaboration.",
-    icon: Code,
-    year: "2024",
-    color: "text-green-400",
-    bgColor: "bg-green-400/10"
-  },
-  {
-    id: 3,
-    title: "Top Performer on HackerRank",
-    description: "Earned a 5-star badge in Problem Solving on HackerRank, demonstrating consistent DSA and algorithmic skills.",
-    icon: Star,
-    year: "2023",
-    color: "text-blue-400",
-    bgColor: "bg-blue-400/10"
-  },
-  {
-    id: 4,
-    title: "Volunteering & Community Work",
-    description: "Organized blood donation camps in collaboration with NGOs to support healthcare efforts in underprivileged communities.",
-    icon: HeartHandshake,
-    year: "2023",
-    color: "text-pink-400",
-    bgColor: "bg-pink-400/10"
-  },
-  {
-    id: 5,
-    title: "Super 30 Member",
-    description: "Selected as part of the prestigious Super 30 program, receiving focused training in engineering entrance preparation and problem-solving.",
-    icon: GraduationCap,
-    year: "2020",
-    color: "text-emerald-400",
-    bgColor: "bg-emerald-400/10"
-  }
-];
+
  
 
 function About() {
@@ -119,39 +72,64 @@ function About() {
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-gray-100">
             Professional Experience
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div className="space-y-8">
             {workDetails.map((work, index) => (
-              <CardSpotlight key={index} className="h-auto min-h-96 w-full p-8 relative">
-                <div className="flex flex-col h-full relative z-20">
-                  <div className="mb-6 text-center">
-                    <Briefcase size={36} className="text-blue-400 mx-auto" />
-                  </div>
-                  
-                  <p className="text-xl font-bold text-white text-center relative z-20">{work.Position}</p>
-                  <p className="text-lg font-medium text-blue-400 text-center mb-6 relative z-20">{work.Company}</p>
-                  
-                  <div className="text-gray-300 mt-auto space-y-3 relative z-20">
-                    <p className="text-base flex items-center relative z-20">
-                      <MapPin size={16} className="mr-3 text-blue-500 flex-shrink-0" />
-                      <span>{work.Location}</span>
-                    </p>
-                    <p className="text-base flex items-center relative z-20">
-                      <Briefcase size={16} className="mr-3 text-blue-500 flex-shrink-0" />
-                      <span>{work.Type}</span>
-                    </p>
-                    <p className="text-base flex items-center relative z-20">
-                      <Clock size={16} className="mr-3 text-blue-500 flex-shrink-0" />
-                      <span>{work.Duration}</span>
-                    </p>
+              <div key={index} className="group">
+                <div className="relative bg-gradient-to-br from-neutral-900 to-gray-800/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50 hover:border-blue-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10">
+                  {/* Top Section - Position and Company */}
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                    <div className="mb-4 md:mb-0">
+                      <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">
+                        {work.Position}
+                      </h3>
+                      <p className="text-xl text-blue-400 font-medium">
+                        {work.Company}
+                      </p>
+                    </div>
                     
-                    {work.description && (
-                      <div className="mt-4 pt-4 border-t border-gray-700 relative z-20">
-                        <p className="text-sm italic text-gray-400 leading-relaxed">{work.description}</p>
-                      </div>
-                    )}
+                    {/* Duration Badge */}
+                    <div className="flex items-center bg-blue-500/10 text-blue-400 px-4 py-2 rounded-full border border-blue-500/20">
+                      <Calendar size={16} className="mr-2" />
+                      <span className="font-medium">{work.Duration}</span>
+                    </div>
                   </div>
+                  
+                  {/* Details Section */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div className="flex items-center text-gray-300">
+                      <div className="bg-gray-800 p-2 rounded-lg mr-4">
+                        <MapPin size={18} className="text-blue-400" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-400 uppercase tracking-wide">Location</p>
+                        <p className="text-base font-medium">{work.Location}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center text-gray-300">
+                      <div className="bg-gray-800 p-2 rounded-lg mr-4">
+                        <User size={18} className="text-blue-400" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-400 uppercase tracking-wide">Type</p>
+                        <p className="text-base font-medium">{work.Type}</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Description */}
+                  {work.description && (
+                    <div className="border-t border-gray-700/50 pt-6">
+                      <p className="text-gray-300 leading-relaxed">
+                        {work.description}
+                      </p>
+                    </div>
+                  )}
+                  
+                  {/* Hover Effect Border */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-gray-500/20 to-neutral-700/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
                 </div>
-              </CardSpotlight>
+              </div>
             ))}
           </div>
         </section>
